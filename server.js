@@ -17,7 +17,7 @@ console.log(req.query)
     http.get({
         host: '127.0.0.1',
 	port: '5000',
-        path: '/hello/' + req.query.json,
+        path: '/get-pict?data='+encodeURIComponent(req.query.json),
     }, function(response) {
         // Continuously update stream with data
         var body = '';
@@ -25,7 +25,7 @@ console.log(req.query)
             body += d;
         });
         response.on('end', function() {
-	    res.send( "NODE: " + req.query.json + "\n<br>PYTHON: " + body );
+	    res.send( body );
         });
     });
 })
