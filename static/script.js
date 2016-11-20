@@ -1,4 +1,4 @@
-    var leshe_json = {};
+var leshe_json = {};
 
 function selectAnswer1(element) {
     console.log(element.value)
