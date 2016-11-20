@@ -69,7 +69,7 @@ function submit( dict ) {
     console.log( JSON.stringify(dict) )
     
     var url = '/form-submit'
-    var posting = jQuery.post(url, JSON.stringify(dict));  
+    var posting = jQuery.get(url, {json:JSON.stringify(dict)});  
     
     posting.done(function( data ) {
         var content = jQuery( data );
