@@ -61,7 +61,7 @@ samp {
 .background {
     position: fixed;
     z-index: -1;
-    filter: blur(5px);
+    filter: blur(5px) contrast(70%);
 }
 
 .intro, .question {
@@ -69,7 +69,7 @@ samp {
     padding: 50px;
     
     /*border-bottom: 4px solid black;*/
-    background: #fff;
+    background: rgba(255,255,255,0.7);
     box-shadow: 0 0 3px rgba(0,0,0,0.7);
 }
 
@@ -90,7 +90,7 @@ samp {
 
 .form-group {
     text-align: left;
-    margin: 50px;
+/*    margin: 50px;*/
 }
 .form-check {
     padding: 5px;
