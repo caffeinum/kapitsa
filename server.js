@@ -13,11 +13,11 @@ app.get("/final", function(req, res) {
 */
 app.get("/form-submit", function(req, res) {
    // send http request get a picture url and send it back
-
+console.log(req.query)
     http.get({
         host: '127.0.0.1',
 	port: '5000',
-        path: '/hello/' + req.params.json,
+        path: '/hello/' + req.query.json,
     }, function(response) {
         // Continuously update stream with data
         var body = '';
@@ -25,7 +25,7 @@ app.get("/form-submit", function(req, res) {
             body += d;
         });
         response.on('end', function() {
-	    res.send( "NODE: " + req.params.json + "\n<br>PYTHON: " + body );
+	    res.send( "NODE: " + req.query.json + "\n<br>PYTHON: " + body );
         });
     });
 })
