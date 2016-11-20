@@ -95,7 +95,8 @@ samp {
     padding: 5px;
 }
 .form-check input {
-    width: 44px; height: 44px;
+    /*width: 44px; height: 44px;*/
+    transform: scale(1.5,1.5);
     margin: 5px;
 }
 
