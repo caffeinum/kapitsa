@@ -2,9 +2,12 @@ var leshe_json = {};
 var image_url = "";
 
 jQuery(function () {
+	$('#image').removeClass('hide');
+
 	if ( image = getImageUrl() ) {
     		$('#image').attr('src', image)
     		$('#share_buttons').attr('data-image', "http://kapitsa-vs-you.ru" + image)
+
 	}
 })
 
