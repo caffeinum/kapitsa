@@ -2,6 +2,9 @@
 <html>
 
     <head>
+        
+        <script type="text/javascript" src="script.js"></script>
+        
         <meta charset="utf-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <title>Насколько вы КАПИЦА?</title>
@@ -12,7 +15,6 @@
 <!--        <link rel="stylesheet" href="checkbox.css">-->
         <link rel="stylesheet" href="main.css">
 
-        <script type="text/javascript" src="http://vk.com/js/api/share.js?90" charset="windows-1251"></script>
     </head>
     <body>
         <img src="img/wall.jpg" class="fullscreen background">
@@ -37,54 +39,37 @@
 
             </p>
         </div>
-		
+        
+        
         <div class="question fullscreen" id="question-1">
-            <div class="number cntr"> <span> 1 / 10 </span> </div>
         
-            <div class="ask cntr"> <span> 1. Lorem ipsum dolor sit amet? </span> </div>
-            
-            <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios1" value="option1" checked>
-                Option one
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios2" value="option2">
-                Option two
-                </label>
-                </div>
-                <div class="form-check disabled">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="optionsRadios" id="optionsRadios3" value="option3" disabled>
-                Option three is disabled
-                </label>
-                </div>
-            </fieldset>
             
             
-            <fieldset class="form-group">
-                <div class="form-check">
-                    
-                    <input id="question1_check1" type="checkbox" class="form-check-input">
-                    <label class="form-check-label" for="question1_check1">
-                    Check me out
-                    </label>
-                </div>
-
-            </fieldset>
-        
-        
-        
+            <div class="ask cntr"> <span> Ваш факультет </span> </div>
+            
+            <div class="styled-select slate">
+            <select onchange="selectAnswer(this)">
+                <option value = "ФОПФ">ФОПФ</option>
+                <option value="ФИВТ">ФИВТ</option>
+                <option value="ФУПМ">ФУПМ</option>
+                <option value="ФАКИ">ФАКИ</option>
+                <option value="ФАЛТ">ФАЛТ</option>
+                <option value="ФПФЭ">ФПФЭ</option>
+                <option value="ФРТК">ФРТК</option>
+                <option value="ФМХФ/ФБМФ">ФМХФ/ФБМФ</option>
+                <option value="ФФКЭ">ФФКЭ</option>
+                <option value="ФНБИК">ФНБИК</option>
+                <option value="Другое">Другое</option>
+            </select>
+            </div>
+            
         </div>
 
         
                 <div class="question fullscreen" id="question-1">
-            <div class="number cntr"> <span> 1 / 10 </span> </div>
+            <div class="number cntr"> <span> </span> </div>
         
-            <div class="ask cntr"> <span> 1. Lorem ipsum dolor sit amet? </span> </div>
+            <div class="ask cntr"> <span> Занимается ли кто-нибудь из ваших ближайших родственников наукой? </span> </div>
             
             <fieldset class="form-group">
                 <div class="form-check">

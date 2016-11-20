@@ -78,14 +78,27 @@ samp {
 }
 
 .cntr {
-    text-align: center;
-    margin: 0;
+    text-align: left;
+    margin: 15;
     padding: 0;
     border: 0;
     outline: 0;
     font-size: 100%;
     vertical-align: baseline;
     background: transparent;
+}
+
+.styled-select.slate {
+   background: url(http://i62.tinypic.com/2e3ybe1.jpg) no-repeat right center;
+   height: 34px;
+   width: 700px;
+}
+
+.styled-select.slate select {
+   border: 1px solid #ccc;
+   font-size: 16px;
+   height: 34px;
+   width: 700px;
 }
 
 .form-group {
@@ -95,9 +108,11 @@ samp {
 .form-check {
     padding: 5px;
 }
+.form-check: hover {
+    background-color: azure;
+}
 .form-check input {
     /*width: 44px; height: 44px;*/
-    transform: scale(1.5,1.5);
     margin: 5px;
 }
 
