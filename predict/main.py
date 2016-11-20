@@ -6,8 +6,9 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/get-pict/<data>')
-def process_json(data):
+@app.route('/get-pict/')
+def process_json():
+	data = request.args.get('data', '')
 	data = data.encode('utf-8')
 	try:
 		#{"exam_points":"280","friends":"655","sport":"Нет","department":"ФУПМ","relatives":"Нет","increased scholarships":"Нет","exam retakes":"Не больше трёх","influenced by":"Кто-то из друзей","religion":"Нет","nutrition":"Чаще обедал в столовой","lectures":"Очень редко"}:
