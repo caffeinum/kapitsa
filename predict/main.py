@@ -5,9 +5,6 @@ import json
 #import boosting
 app = Flask(__name__)
 
-@app.route('/')
-def index():
-    return 'Privet, Lesha!'
 
 @app.route('/get-pict/<data>')
 def process_json(data):
@@ -29,6 +26,5 @@ def process_json(data):
 	# 	print "Bad data", data
 	# 	return "Bad data, " + str(data)
 
-	
 
 	return str(score)
