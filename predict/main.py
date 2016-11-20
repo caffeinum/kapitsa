@@ -8,10 +8,11 @@ def index():
 
 @app.route('/hello/<jsonn>')
 def process_json(jsonn):
+	print "GET", str(jsonn)
 	try:
 		j = json.loads(jsonn)
 	except:
 		print "Bad json", jsonn
 		return None
-
+	print "SEND", str(j)
 	return j
