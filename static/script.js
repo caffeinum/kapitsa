@@ -2,7 +2,10 @@ var leshe_json = {};
 var image_url = "";
 
 jQuery(function () {
-    $('#image').attr('src', getImageUrl())
+	if ( image = getImageUrl() ) {
+    		$('#image').attr('src', image)
+    		$('#share_buttons').attr('data-image', "http://kapitsa-vs-you.ru" + image)
+	}
 })
 
 function selectAnswer1(element) {
@@ -82,10 +85,10 @@ function submit( dict ) {
 //    });
 //  
     var images = [
-        "kapitsa1.jpg",
-        "kapitsa2.jpg",
-        "",
-        ""
+        "/img/results/ft.png",
+        "/img/results/fe.png",
+        "/img/results/st.png",
+        "/img/results/et.png"
     ]
     
     

@@ -72,7 +72,9 @@ samp {
     background: rgba(255,255,255,0.7);
     box-shadow: 0 0 3px rgba(0,0,0,0.7);
 }
-
+.intro {
+	background: white;
+}
 .intro .row h1 {
     text-align: center;
 }
