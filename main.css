@@ -108,3 +108,7 @@ samp {
 .ask {
     font-size: 24px;
 }
+
+.vcenter {
+    margin-top:50px;
+}
