@@ -1,4 +1,4 @@
-var leshe_json = {};
+    var leshe_json = {};
 
 function selectAnswer1(element) {
     console.log(element.value)
@@ -67,6 +67,15 @@ function sendResult() {
 function submit( dict ) {
     console.log(dict)
     console.log( JSON.stringify(dict) )
+    
+    var url = '/form-submit'
+    var posting = jQuery.post(url, JSON.stringify(dict));  
+    
+    posting.done(function( data ) {
+        var content = jQuery( data );
+        console.log(content);
+    });
+    
     return JSON.stringify(dict)
 }
 
