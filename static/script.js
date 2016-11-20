@@ -1,4 +1,9 @@
 var leshe_json = {};
+var image_url = "";
+
+jQuery(function () {
+    $('#image').attr('src', getImageUrl())
+})
 
 function selectAnswer1(element) {
     console.log(element.value)
@@ -68,15 +73,34 @@ function submit( dict ) {
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
-    var url = '/form-submit'
-    var posting = jQuery.get(url, {json:JSON.stringify(dict)});  
+//    var url = '/form-submit'
+//    var posting = jQuery.get(url, {json:JSON.stringify(dict)});  
+//    
+//    posting.done(function( data ) {
+//        var content = jQuery( data );
+//        console.log(content);
+//    });
+//  
+    var images = [
+        "kapitsa1.jpg",
+        "kapitsa2.jpg",
+        "",
+        ""
+    ]
     
-    posting.done(function( data ) {
-        var content = jQuery( data );
-        console.log(content);
-    });
+    
+    var json = JSON.stringify(dict)
+    var image_url = images[ json.length % 4 ]
+    
+    window.location = "/final.html?image="+image_url;
+//    
+    
     
     return JSON.stringify(dict)
+}
+
+function getImageUrl() {
+    return window.location.search.slice(1).split('&').filter(function(elem){ return elem.split("=")[0] == "image" })[0].split("=")[1];
 }
 
 
