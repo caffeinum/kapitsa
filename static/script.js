@@ -10,7 +10,7 @@ var leshe_json = {
 	"lectures": "",
 	"sport": "",
 	"friends": 0,
-	"exam_points": 0
+	"exam points": 0
 };
 var image_url = "";
 
@@ -81,7 +81,7 @@ function selectAnswer11(element) {
 
 function selectAnswer12(element) {
     console.log(element.value)
-    leshe_json["exam_points"] = element.value
+    leshe_json["exam points"] = element.value
 }
 
 function sendResult() {
