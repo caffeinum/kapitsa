@@ -42,10 +42,6 @@ function drawFace(grade) {
 }
 
 function drawTexts(grade) {
-	ctx.fillStyle = "black"
-	ctx.font = "30px Verdana"
-	ctx.fillText("Главный признак таланта - это", 500, 500)
-	ctx.fillText("когда человек знает, чего он хочет", 450, 550)
 }
 
 function drawGrade(grade) {
@@ -54,7 +50,7 @@ function drawGrade(grade) {
 
 	ctx.fillStyle = "#3B797D"
 	ctx.font = '144px impact';
-	ctx.fillText(grade + "%", 670, 370);
+	ctx.fillText( Math.round(grade) + "%", 670, 370);
  
 }
 
