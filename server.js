@@ -1,31 +1,43 @@
 var express = require('express');
 var path = require("path");
 var http = require("http");
-var app = express();
-// respond with "hello world" when a GET request is made to the homepage
+var bodyparser = require("body-parser")
 
+var image_generator = require("/home/kapitsa/image_gen")
+var app = express();
+
+app.use(bodyparser.urlencoded({
+    extended: true
+}))
 app.use("/", express.static(__dirname + "/static"))
 
-/* send http request get a picture url and send it back
-app.get("/final", function(req, res) {
-   res.send('pic\n');
+app.get("/image-gen", function(req, res) {
+	var url = image_generator(55)	
+
+	console.log( url )
+	console.log( path.join(__dirname, url) )
+	res.sendFile( path.join(__dirname, url) )
 })
-*/
-app.get("/form-submit", function(req, res) {
+
+app.post("/form-submit", function(req, res) {
    // send http request get a picture url and send it back
-console.log(req.query)
+console.log(req.body)
     http.get({
-        host: '127.0.0.1',
+        host: 'localhost',
 	port: '5000',
-        path: '/get-pict?data='+encodeURIComponent(req.query.json),
+        path: '/get-pict?data=' + encodeURIComponent(req.body.json),
     }, function(response) {
         // Continuously update stream with data
-        var body = '';
+
+	var body = '';
         response.on('data', function(d) {
             body += d;
         });
         response.on('end', function() {
-	    res.send( body );
+	    var score = Number(body)
+
+	    var url = image_generator(score)
+	    res.send( url )
         });
     });
 })

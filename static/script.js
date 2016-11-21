@@ -1,4 +1,17 @@
-var leshe_json = {};
+var leshe_json = {
+	department: "",
+	relatives: "",
+	"social activity": "",
+	"increased scholarships": "",
+	"exam retakes": "",
+	"influenced by": "",
+	"religion": "",
+	"nutrition": "",
+	"lectures": "",
+	"sport": "",
+	"friends": 0,
+	"exam_points": 0
+};
 var image_url = "";
 
 jQuery(function () {
@@ -79,14 +92,17 @@ function submit( dict ) {
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
-//    var url = '/form-submit'
-//    var posting = jQuery.get(url, {json:JSON.stringify(dict)});  
-//    
-//    posting.done(function( data ) {
-//        var content = jQuery( data );
-//        console.log(content);
-//    });
-//  
+    var url = '/form-submit'
+    var posting = jQuery.post(url, {json:JSON.stringify(dict)});  
+    
+    posting.done(function( data ) {
+        console.log( data );
+    	
+	var image_url = data	
+	window.location = "/final.html?image="+image_url;
+    });
+
+    /* 
     var images = [
         "/img/results/ft.png",
         "/img/results/fe.png",
@@ -97,16 +113,20 @@ function submit( dict ) {
     
     var json = JSON.stringify(dict)
     var image_url = images[ json.length % 4 ]
-    
-    window.location = "/final.html?image="+image_url;
-//    
+    */
     
     
     return JSON.stringify(dict)
 }
 
 function getImageUrl() {
-    return window.location.search.slice(1).split('&').filter(function(elem){ return elem.split("=")[0] == "image" })[0].split("=")[1];
+	var image_str = window.location.search.slice(1).split('&').filter(function(elem){ return elem.split("=")[0] == "image" })[0]
+	if ( image_str ) {
+		return image_str.split("=")[1];
+	} else {
+		return null
+	}
 }
+
 
 

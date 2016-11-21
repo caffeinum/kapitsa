@@ -6,7 +6,7 @@ import json
 app = Flask(__name__)
 
 
-@app.route('/get-pict/')
+@app.route('/get-pict')
 def process_json():
 	data = request.args.get('data', '')
 	data = data.encode('utf-8')
