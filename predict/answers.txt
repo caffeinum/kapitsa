@@ -1,3 +1,0 @@
-{"department":"","relatives":"","social activity":"","increased scholarships":"","exam retakes":"","influenced by":"","religion":"","nutrition":"","lectures":"","sport":"","friends":0,"exam_points":0}
-{"department":"","relatives":"","social activity":"","increased scholarships":"","exam retakes":"","influenced by":"","religion":"","nutrition":"","lectures":"","sport":"","friends":0,"exam_points":"fds"}
-{"department":"","relatives":"","social activity":"","increased scholarships":"","exam retakes":"","influenced by":"","religion":"","nutrition":"","lectures":"","sport":"","friends":0,"exam_points":"324"}
