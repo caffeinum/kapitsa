@@ -14,6 +14,9 @@ def process_json():
 		#{"exam_points":"280","friends":"655","sport":"Нет","department":"ФУПМ","relatives":"Нет","increased scholarships":"Нет","exam retakes":"Не больше трёх","influenced by":"Кто-то из друзей","religion":"Нет","nutrition":"Чаще обедал в столовой","lectures":"Очень редко"}:
 
 		j = json.loads(data)
+
+		with open("answers.txt", "a") as f:
+			f.write( data + "\n" )
 	except:
 		print "Bad json", data
 		return "Bad json, " + str(data)
