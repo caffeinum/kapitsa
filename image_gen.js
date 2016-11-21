@@ -1,8 +1,16 @@
 var Canvas = require('canvas')
+    , Image = Canvas.Image
+    , Font = Canvas.Font
+var impact = new Font('impact', fontFile('impact.ttf'))
 
 var fs = require('fs');
 var width = 1032
 var height = 617
+
+function fontFile(name) {
+	console.log( __dirname )
+	return __dirname + '/fonts/' + name;
+}
 
 function drawBackground() {
 	ctx.fillStyle = "#F1F2E4"
@@ -18,12 +26,19 @@ function drawBorder() {
 }
 
 function drawFace(grade) {
-	var half = height / 2
-	var kap = fs.readFileSync(__dirname + "/static/img/results/st.png")
+	var images = [
+		"ft.png",
+		"fe.png",
+		"st.png",
+		"et.png"	
+	]	
+
+	var image = images[ Math.floor(grade / 25) ] 
+
+	var kap = fs.readFileSync(__dirname + "/static/img/results/" + image)
   	img = new Image;
   	img.src = kap;
 	ctx.drawImage(img, 0, 0, width, height)
-//  	ctx.drawImage(img, half - img.width/2, half - img.height/2, img.width, img.height);
 }
 
 function drawTexts(grade) {
@@ -38,8 +53,8 @@ function drawGrade(grade) {
 	ctx.fillRect(650,200,350,200)
 
 	ctx.fillStyle = "#3B797D"
-	ctx.font = 'bold 120px impact';
-	ctx.fillText(grade + "%", 650, 400);
+	ctx.font = '144px impact';
+	ctx.fillText(grade + "%", 670, 370);
  
 }
 
@@ -56,7 +71,6 @@ function drawKapitsa(ctx, grade) {
 }
 
 function generator(grade) {
-	Image = Canvas.Image
 	canvas = new Canvas(width, height)
 	
 	ctx = canvas.getContext('2d')
