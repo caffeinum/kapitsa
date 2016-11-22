@@ -1,6 +1,6 @@
 var leshe_json = {
-	department: "ФОПФ",
-	relatives: "Да",
+	"department": "ФОПФ",
+	"relatives": "Да",
 	"social activity": "Да",
 	"increased scholarships": "Да",
 	"exam retakes": "Не было ни одной",
