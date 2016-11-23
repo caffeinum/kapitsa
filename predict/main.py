@@ -16,7 +16,7 @@ with open('clf.pickle', 'rb') as handle:
     clf = pickle.load(handle)
     
 @app.route('/get-pict')
-def process_json(j):
+def process_json():
     data = request.args.get('data', '')
     data = data.encode('utf-8')
         
@@ -109,6 +109,7 @@ def process_json(j):
         X[27] = float(j["exam points"])
         print (np.array(X))
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
+        score = np.nan_to_num(score) #Bad and ugly
 
     except:
         print "Bad data", data
