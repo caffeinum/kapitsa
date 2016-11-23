@@ -3,7 +3,7 @@ var leshe_json = {
 	"relatives": "Да",
 	"social activity": "Да",
 	"increased scholarships": "Да",
-	"exam retakes": "Не было ни одной",
+	"exam retakes": "Не больше трёх",
 	"influenced by": "Семья",
 	"religion": "Да",
 	"nutrition": "Чаще готовил сам",
