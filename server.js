@@ -47,6 +47,13 @@ app.get("/", function(req, res) {
 	res.sendFile( path.join(__dirname, "static/index.html") )
 })
 
+app.get("/set-answer", function(req,res) {
+    var ans = req.query.answer
+    var id = req.query.id
+    
+    // SAVE TO DB IF QUESTION IS OK
+})
+
 app.listen(80, function () {
 	console.log('app listening on port 80!')
 })

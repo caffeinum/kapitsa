@@ -14,15 +14,42 @@ var leshe_json = {
 };
 var image_url = "";
 
+var json = leshe_json
+
 jQuery(function () {
 	$('#image').removeClass('hide');
 
 	if ( image = getImageUrl() ) {
     		$('#image').attr('src', image)
     		$('#share_buttons').attr('data-image', "http://kapitsa-vs-you.ru" + image)
-
 	}
+    
+    $('input').change(function(event) {
+        var id = $(this).attr("id")
+        
+        collectAnswers()
+    })
+    
+    collectAnswers()
 })
+
+function collectAnswers() {
+    var dict = {}
+    
+    $("input[type=radio]").each(function (index, answer){
+        if ( $(this).prop('checked') )
+            dict[ $(this).attr('name') ] = $(this).val()
+    })
+    
+    $("input[type=text]").each(function (index, answer){
+        dict[ $(this).attr('name') ] = $(this).val()
+    })
+    
+    console.log(dict)
+
+    json = dict
+    return dict
+}
 
 function selectAnswer1(element) {
     console.log(element.value)
@@ -85,7 +112,7 @@ function selectAnswer12(element) {
 }
 
 function sendResult() {
-    submit( leshe_json )
+    submit( json )
 }
 
 function submit( dict ) {
@@ -98,23 +125,9 @@ function submit( dict ) {
     posting.done(function( data ) {
         console.log( data );
     	
-	var image_url = data	
-	window.location = "/final.html?image="+image_url;
+        var image_url = data	
+        window.location = "/final.html?image="+image_url;
     });
-
-    /* 
-    var images = [
-        "/img/results/ft.png",
-        "/img/results/fe.png",
-        "/img/results/st.png",
-        "/img/results/et.png"
-    ]
-    
-    
-    var json = JSON.stringify(dict)
-    var image_url = images[ json.length % 4 ]
-    */
-    
     
     return JSON.stringify(dict)
 }
