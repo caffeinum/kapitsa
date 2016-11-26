@@ -22,39 +22,37 @@
     </head>
     <body>
         <img src="img/wall.jpg" class="fullscreen background">
-        
+
         <div class="intro fullscreen">
             <div class="row">
             <img src="img/logo70.png" class="col-xs-3">
             <h1 class="col-xs-6">Вероятность Капицы</h1>
             <img src="img/мфти.jpg" class="col-xs-3">
             </div>
-            
+
             <h2>Посчитай свою вероятность стать учёным!</h2>
 
             <p>
-                Многие из нас, поступая на Физтех, мечтали стать учёными. По разным причинам значительная часть из нас бросают этот тернистый путь.
-                Нам стало интересно, какие персональные качества влияют на выбор жизненого пути - занятия наукой. 
+                Многие из нас, поступая на Физтех, мечтали стать учёными. По разным причинам значительная часть бросает этот тернистый путь.
+                Нам стало интересно, какие персональные качества влияют на выбор жизненого пути - занятия наукой.
             <p>
-                Мы собрали более 500 ответов выпускников Физтеха на анкету с 30 разнообразными вопросами про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой, примерно половина нашла себя в чем-то другом. 
-                Мы обнаружили, что ответы на 9 вопросов хорошо коррелируют с вероятностью занятия наукой. Используя ответы на эти вопросы мы построили модель точность, которой 75%±1% на кроссвалидации. 
+                Мы собрали более 500 ответов выпускников Физтеха на 30 разнообразных вопросов про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой.
+                Мы обнаружили, что ответы на 12 вопросов хорошо коррелируют с вероятностью связать свою жизнь с наукой. Используя ответы на эти вопросы и магию машинного обучения, мы построили модель, которая с точностью 75% предсказывает шанс остаться в науке.
             <p>
-                Мы предлагаем вам ответить на эти 12 вопросов и узнать свою предрасположенность к занятию наукой.
+                Мы предлагаем Вам ответить на эти 12 вопросов и узнать свою предрасположенность к занятию наукой. Дерзайте!
 
             </p>
         </div>
-        
-        
+
+
         <div class="question fullscreen" id="question-1">
-        
-            
-            
+
+
+
             <div class="ask cntr"> <span> Ваш факультет </span> </div>
-            
-            
-            
+
             <div class="styled-select slate">
-            <select onchange="selectAnswer1(this)">
+            <select name="department" onchange="selectAnswer1(this)">
                 <option value = "ФОПФ">ФОПФ</option>
                 <option value="ФИВТ">ФИВТ</option>
                 <option value="ФУПМ">ФУПМ</option>
@@ -68,15 +66,15 @@
                 <option value="Другое">Другое</option>
             </select>
             </div>
-            
+
         </div>
 
-        
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Занимается ли кто-нибудь из ваших ближайших родственников наукой? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Занимается ли кто-нибудь из Ваших ближайших родственников наукой? </span> </div>
+
             <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -92,61 +90,61 @@
                 </label>
                 </div>
             </fieldset>
-        
-        
-        
+
+
+
         </div>
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span>  </span> </div>
-        
+
             <div class="ask cntr"> <span> Участвовали ли Вы в общественной деятельности? </span> </div>
-            
+
             <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="social activity" id="optionsRadios1" value="Да" checked
+                <input type="radio" class="form-check-input" name="social_activity" id="optionsRadios1" value="Да" checked
                        onchange = selectAnswer3(this)>
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="social activity" id="optionsRadios2" value="Нет" onchange = selectAnswer3(this)>
+                <input type="radio" class="form-check-input" name="social_activity" id="optionsRadios2" value="Нет" onchange = selectAnswer3(this)>
                 Нет
                 </label>
                 </div>
             </fieldset>
-            
+
         </div>
                 <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Получали ли вы повышенную стипендию? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Получали ли Вы повышенную стипендию? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="increased scholarship" id="optionsRadios1" value= "Да" checked
+                <input type="radio" class="form-check-input" name="increased_scholarship" id="optionsRadios1" value= "Да" checked
                        onchange = selectAnswer4(this)>
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="increased scholarship" id="optionsRadios2" value= "Нет" onchange = selectAnswer4(this)>
+                <input type="radio" class="form-check-input" name="increased_scholarship" id="optionsRadios2" value= "Нет" onchange = selectAnswer4(this)>
                 Нет
                 </label>
                 </div>
             </fieldset>
-        
-        
-        
+
+
+
         </div>
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
+
             <div class="ask cntr"> <span> Сколько пересдач у Вас было? </span> </div>
-            
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -170,12 +168,12 @@
                 </div>
             </fieldset>
         </div>
-                
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Кто оказал на вас наибольшее влияние? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Кто оказал на Вас наибольшее влияние? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -199,12 +197,12 @@
                 </div>
             </fieldset>
             </div>
-        
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Считаете ли вы себя религиозным человеком? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Считаете ли Вы себя религиозным человеком? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -220,13 +218,13 @@
                 </label>
                 </div>
             </fieldset>
-            </div> 
-        
+            </div>
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Как вы питались на физтехе? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Как Вы питались на физтехе? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -243,13 +241,13 @@
                 </div>
             </fieldset>
             </div>
-        
-        
+
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Посещали ли вы лекции? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Посещали ли Вы лекции? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -273,12 +271,12 @@
                 </div>
             </fieldset>
             </div>
-        
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
-            <div class="ask cntr"> <span> Занимались ли вы регулярно спортом/физической активностью? </span> </div>
-            
+
+            <div class="ask cntr"> <span> Занимаетесь ли Вы регулярно спортом/физической активностью? </span> </div>
+
              <fieldset class="form-group">
                 <div class="form-check">
                 <label class="form-check-label">
@@ -295,45 +293,44 @@
                 </div>
             </fieldset>
             </div>
-        
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
+
             <div class="ask cntr"> <span> Количество друзей в соцсети </span> </div>
-            
+
             <section>
                     <ul class="input-list style-1 clearfix">
-                        
+
                     <input type="text" name="friends" onchange = selectAnswer11(this)>
-                        
+
                     </ul>
-            </section>    
+            </section>
             </div>
-        
+
             <div class="question fullscreen" id="question-1">
             <div class="number cntr"> <span> </span> </div>
-        
+
             <div class="ask cntr"> <span> Суммарный балл ЕГЭ (Или его эквивалент по стобалльной шкале) </span> </div>
-            
+
             <section>
                     <ul class="input-list style-1 clearfix">
-                        
-                    <input type="text" name="exam points" onchange = selectAnswer12(this)>
-                        
+
+                    <input type="text" name="exam_points" onchange = selectAnswer12(this)>
+
                     </ul>
-            </section>      
-                
-                
+            </section>
+
+
         <div class="hot-container">
-	   <p>
-		<a href="#" class="btn" onclick="sendResult()">Узнать результат</a>
-	   </p>
+           <p>
+                <a href="#" class="btn" onclick="sendResult()">Узнать результат</a>
+           </p>
 
         </div>
-        
+
             <bottom class=""></bottom>
-        
+
         </div>
     </body>
 </html>
-

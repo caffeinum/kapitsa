@@ -1,50 +1,62 @@
-var leshe_json = {
-	"department": "ФОПФ",
-	"relatives": "Да",
-	"social activity": "Да",
-	"increased scholarships": "Да",
-	"exam retakes": "Не больше трёх",
-	"influenced by": "Семья",
-	"religion": "Да",
-	"nutrition": "Чаще готовил сам",
-	"lectures": "Почти всегда",
-	"sport": "Да",
-	"friends": 0,
-	"exam points": 0
+leshe_json = {
+        "department": "ФОПФ",
+        "relatives": "Да",
+        "social_activity": "Да",
+        "increased_scholarships": "Да",
+        "exam_retakes": "Не больше трёх",
+        "influenced_by": "Семья",
+        "religion": "Да",
+        "nutrition": "Чаще готовил сам",
+        "lectures": "Почти всегда",
+        "sport": "Да",
+        "friends": 0,
+        "exam_points": 0
 };
 var image_url = "";
 
 var json = leshe_json
 
 jQuery(function () {
-	$('#image').removeClass('hide');
+        $('#image').removeClass('hide');
 
-	if ( image = getImageUrl() ) {
-    		$('#image').attr('src', image)
-    		$('#share_buttons').attr('data-image', "http://kapitsa-vs-you.ru" + image)
-	}
-    
-    $('input').change(function(event) {
+        if ( image = getImageUrl() ) {
+                $('#image').attr('src', image)
+                $('#share_buttons').attr('data-image', "http://kapitsa-vs-you.ru" + image)
+        }
+
+    $("input select").change(function(event) {
         var id = $(this).attr("id")
-        
+
         collectAnswers()
     })
-    
+
+    $("input").change(function(event) {
+        var id = $(this).attr("id")
+
+        collectAnswers()
+    })
+
     collectAnswers()
 })
 
+
 function collectAnswers() {
     var dict = {}
-    
+
     $("input[type=radio]").each(function (index, answer){
         if ( $(this).prop('checked') )
             dict[ $(this).attr('name') ] = $(this).val()
     })
-    
+
     $("input[type=text]").each(function (index, answer){
         dict[ $(this).attr('name') ] = $(this).val()
     })
-    
+
+    $("select").each(function (index, answer){
+        dict[ $(this).attr('name') ] = $(this).val()
+    })
+
+
     console.log(dict)
 
     json = dict
@@ -63,22 +75,22 @@ function selectAnswer2(element) {
 
 function selectAnswer3(element) {
     console.log(element.value)
-    leshe_json["social activity"] = element.value
+    leshe_json["social_activity"] = element.value
+
 }
 
 function selectAnswer4(element) {
     console.log(element.value)
-    leshe_json["increased scholarships"] = element.value
+    leshe_json["increased_scholarships"] = element.value
 }
-
 function selectAnswer5(element) {
     console.log(element.value)
-    leshe_json["exam retakes"] = element.value
+    leshe_json["exam_retakes"] = element.value
 }
 
 function selectAnswer6(element) {
     console.log(element.value)
-    leshe_json["influenced by"] = element.value
+    leshe_json["influenced_by"] = element.value
 }
 
 function selectAnswer7(element) {
@@ -108,8 +120,9 @@ function selectAnswer11(element) {
 
 function selectAnswer12(element) {
     console.log(element.value)
-    leshe_json["exam points"] = element.value
+    leshe_json["exam_points"] = element.value
 }
+
 
 function sendResult() {
     submit( json )
