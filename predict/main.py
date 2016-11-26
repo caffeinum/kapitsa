@@ -27,7 +27,7 @@ def process_json():
         j = json.loads(data)
     except:
         print "Bad json", data
-        return random.random()
+        return str(-1)
 
     try:
         X = np.zeros(28) - 999.
@@ -114,7 +114,7 @@ def process_json():
         print (score)
     except:
         print "Bad data", data
-        return random.random() 
+        return str(-1) 
 
     values = [str(datetime.now())] + [str(i) if isinstance(i, (float, int)) else i for i in j.values()]
     answer_line = u",".join( values )
@@ -122,4 +122,4 @@ def process_json():
     with open("answers.csv", "a") as f:
         f.write( answer_line.encode('utf-8') + "\n" )
 
-    return str(score)
+    return str(np.clip(score, 0.05, 0.95))

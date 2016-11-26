@@ -3,7 +3,7 @@ var path = require("path");
 var http = require("http");
 var bodyparser = require("body-parser")
 
-var image_generator = require("/home/kapitsa/image_gen")
+var image_generator = require("./image_gen")
 var app = express();
 
 app.use(bodyparser.urlencoded({
