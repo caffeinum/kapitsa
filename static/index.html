@@ -52,7 +52,7 @@
             <div class="ask cntr"> <span> Ваш факультет </span> </div>
 
             <div class="styled-select slate">
-            <select name="department" onchange="selectAnswer1(this)">
+            <select name="department">
                 <option value = "ФОПФ">ФОПФ</option>
                 <option value="ФИВТ">ФИВТ</option>
                 <option value="ФУПМ">ФУПМ</option>
@@ -79,13 +79,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="relatives" id="optionsRadios1" value="Да" checked
-                       onchange = selectAnswer2(this)>
+                       >
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="relatives" id="optionsRadios2" value="Нет" onchange = selectAnswer2(this)>
+                <input type="radio" class="form-check-input" name="relatives" id="optionsRadios2" value="Нет" >
                 Нет
                 </label>
                 </div>
@@ -103,13 +103,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="social_activity" id="optionsRadios1" value="Да" checked
-                       onchange = selectAnswer3(this)>
+                       >
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="social_activity" id="optionsRadios2" value="Нет" onchange = selectAnswer3(this)>
+                <input type="radio" class="form-check-input" name="social_activity" id="optionsRadios2" value="Нет" >
                 Нет
                 </label>
                 </div>
@@ -125,13 +125,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="increased_scholarship" id="optionsRadios1" value= "Да" checked
-                       onchange = selectAnswer4(this)>
+                       >
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="increased_scholarship" id="optionsRadios2" value= "Нет" onchange = selectAnswer4(this)>
+                <input type="radio" class="form-check-input" name="increased_scholarship" id="optionsRadios2" value= "Нет" >
                 Нет
                 </label>
                 </div>
@@ -149,20 +149,20 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="exam_retakes" id="optionsRadios1" value="Не было ни одной" checked
-                       onchange = selectAnswer5(this)>
+                       >
                 Не было ни одной
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="exam_retakes" id="optionsRadios1" value="Не больше трёх" checked
-                       onchange = selectAnswer5(this)>
+                       >
                 Не больше трёх
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="exam_retakes" id="optionsRadios2" value="Больше трёх" onchange = selectAnswer5(this)>
+                <input type="radio" class="form-check-input" name="exam_retakes" id="optionsRadios2" value="Больше трёх" >
                 Больше трёх
                 </label>
                 </div>
@@ -178,20 +178,20 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="influenced_by" id="optionsRadios1" value="Семья" checked
-                       onchange = selectAnswer6(this)>
+                       >
                 Семья
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="influenced_by" id="optionsRadios2" value="Кто-то из друзей" onchange = selectAnswer6(this)>
+                <input type="radio" class="form-check-input" name="influenced_by" id="optionsRadios2" value="Кто-то из друзей" >
                 Кто-то из друзей
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="influenced_by" id="optionsRadios1" value="Любимый преподаватель" checked
-                       onchange = selectAnswer6(this)>
+                       >
                 Любимый преподаватель
                 </label>
                 </div>
@@ -207,13 +207,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="religion" id="optionsRadios1" value="Да" checked
-                       onchange = selectAnswer7(this)>
+                       >
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="religion" id="optionsRadios2" value="Нет" onchange = selectAnswer7(this)>
+                <input type="radio" class="form-check-input" name="religion" id="optionsRadios2" value="Нет" >
                 Нет
                 </label>
                 </div>
@@ -229,13 +229,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="nutrition" id="optionsRadios1" value="Чаще готовил сам" checked
-                       onchange = selectAnswer8(this)>
+                       >
                 Чаще готовил сам
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="nutrition" id="optionsRadios2" value="Чаще обедал в столовой" onchange = selectAnswer8(this)>
+                <input type="radio" class="form-check-input" name="nutrition" id="optionsRadios2" value="Чаще обедал в столовой" >
                 Чаще обедал в столовой
                 </label>
                 </div>
@@ -252,20 +252,20 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="lectures" id="optionsRadios1" value="Почти всегда" checked
-                       onchange = selectAnswer9(this)>
+                       >
                 Почти всегда
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="lectures" id="optionsRadios1" value="Посетил примерно половину" checked
-                       onchange = selectAnswer9(this)>
+                       >
                 Посетил примерно половину
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="lectures" id="optionsRadios2" value="Очень редко" onchange = selectAnswer9(this)>
+                <input type="radio" class="form-check-input" name="lectures" id="optionsRadios2" value="Очень редко">
                 Очень редко
                 </label>
                 </div>
@@ -281,13 +281,13 @@
                 <div class="form-check">
                 <label class="form-check-label">
                 <input type="radio" class="form-check-input" name="sport" id="optionsRadios1" value="Да" checked
-                       onchange = selectAnswer10(this)>
+                       >
                 Да
                 </label>
                 </div>
                 <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="sport" id="optionsRadios2" value="Нет" onchange = selectAnswer10(this)>
+                <input type="radio" class="form-check-input" name="sport" id="optionsRadios2" value="Нет">
                 Нет
                 </label>
                 </div>
@@ -302,7 +302,7 @@
             <section>
                     <ul class="input-list style-1 clearfix">
 
-                    <input type="text" name="friends" onchange = selectAnswer11(this)>
+                    <input type="text" name="friends">
 
                     </ul>
             </section>
@@ -316,7 +316,7 @@
             <section>
                     <ul class="input-list style-1 clearfix">
 
-                    <input type="text" name="exam_points" onchange = selectAnswer12(this)>
+                    <input type="text" name="exam_points">
 
                     </ul>
             </section>

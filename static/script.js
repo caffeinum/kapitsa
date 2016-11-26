@@ -63,67 +63,6 @@ function collectAnswers() {
     return dict
 }
 
-function selectAnswer1(element) {
-    console.log(element.value)
-    leshe_json["department"] = element.value
-}
-
-function selectAnswer2(element) {
-    console.log(element.value)
-    leshe_json["relatives"] = element.value
-}
-
-function selectAnswer3(element) {
-    console.log(element.value)
-    leshe_json["social_activity"] = element.value
-
-}
-
-function selectAnswer4(element) {
-    console.log(element.value)
-    leshe_json["increased_scholarships"] = element.value
-}
-function selectAnswer5(element) {
-    console.log(element.value)
-    leshe_json["exam_retakes"] = element.value
-}
-
-function selectAnswer6(element) {
-    console.log(element.value)
-    leshe_json["influenced_by"] = element.value
-}
-
-function selectAnswer7(element) {
-    console.log(element.value)
-    leshe_json["religion"] = element.value
-}
-
-function selectAnswer8(element) {
-    console.log(element.value)
-    leshe_json["nutrition"] = element.value
-}
-
-function selectAnswer9(element) {
-    console.log(element.value)
-    leshe_json["lectures"] = element.value
-}
-
-function selectAnswer10(element) {
-    console.log(element.value)
-    leshe_json["sport"] = element.value
-}
-
-function selectAnswer11(element) {
-    console.log(element.value)
-    leshe_json["friends"] = element.value
-}
-
-function selectAnswer12(element) {
-    console.log(element.value)
-    leshe_json["exam_points"] = element.value
-}
-
-
 function sendResult() {
     submit( json )
 }
