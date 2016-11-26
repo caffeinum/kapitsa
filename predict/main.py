@@ -44,36 +44,36 @@ def process_json():
 
         #12 column for social activity
         X[12] = 0
-        if j["social activity"] == u'Нет':
+        if j["social_activity"] == u'Нет':
             X[12] = 1
 
 
         #13 column for grant
-        if j["increased scholarships"] == u'Да':
+        if j["increased_scholarship"] == u'Да':
             X[13] = 1
-        elif j["increased scholarships"] == u'Нет':
+        elif j["increased_scholarship"] == u'Нет':
             X[13] = 0
 
         #14, 15, 16 column for retakes
         X[14] = 0
         X[15] = 0
         X[16] = 0
-        if j["exam retakes"] == u'Не больше трёх':
+        if j["exam_retakes"] == u'Не больше трёх':
             X[14] = 1
-        elif j["exam retakes"] == u'Больше трёх':
+        elif j["exam_retakes"] == u'Больше трёх':
             X[15] = 1
-        elif j["exam retakes"] == u'Не было ни одной':
+        elif j["exam_retakes"] == u'Не было ни одной':
             X[16] = 1
 
         #17, 18, 19 column for influence
         X[17] = 0
         X[18] = 0
         X[19] = 0
-        if j["influenced by"] == u'Любимый преподаватель':
+        if j["influenced_by"] == u'Любимый преподаватель':
             X[17] = 1
-        elif j["influenced by"] == u'Семья':
+        elif j["influenced_by"] == u'Семья':
             X[18] = 1
-        elif j["influenced by"] == u'Кто-то из друзей':
+        elif j["influenced_by"] == u'Кто-то из друзей':
             X[19] = 1
 
         #20 column for religy
