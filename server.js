@@ -81,6 +81,9 @@ app.post("/final", function(req, res){
         response.on('end', function() {
             var image_url = ""
             var json = JSON.parse(body)
+            
+            console.log( "body", body )
+            
             if ( json["OK"] ) {
                 var score = Math.round( Number( json["score"] ) )
                 var id = json["id"]
