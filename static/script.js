@@ -75,12 +75,23 @@ function sendResult(event) {
     //return false
 }
 
+function validateEGE(num) {
+    if ( typeof num != "number" ) return false
+    
+    return num >= 0 && num <= 100
+}
+
 function validate( dict ) {
     // REMOVE THIS WHEN PRODUCTION
     return true
     
-    if ( typeof dict["exam_points"] != "number" )
+    if ( ! validateEGE( dict["exam_points_maths"] ) )
         return false
+    if ( ! validateEGE( dict["exam_points_phys"] ) )
+        return false
+    if ( ! validateEGE( dict["exam_points_russ"] ) )
+        return false
+        
     if ( typeof dict["friends"] != "number" )
         return false
     if ( !dict["department"] )
