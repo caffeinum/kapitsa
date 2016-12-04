@@ -63,10 +63,10 @@ fields = ["department", "relatives", "social_activity", "increased_scholarship",
 def fill_json(j):
     for field in fields:
         if field not in j:
-            j[field] = np.nan
+            j[field] = -999.0 # np.nan
 
-    j["friends"] = float(j.get("friends", np.nan))
-    j["exam points"] = float(j.get("exam points", np.nan))
+    j["friends"] = float(j.get("friends", -999))
+    j["exam points"] = float(j.get("exam points", -999))
     return j
 
 
