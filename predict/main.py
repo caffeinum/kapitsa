@@ -159,8 +159,8 @@ def process_json():
 
         X[26] = j["friends"]
         X[27] = j["exam points"]
-        score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "X= ", np.array(X)
+        score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "score= ", score
 
         if np.isnan(score):
