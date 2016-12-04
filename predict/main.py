@@ -57,6 +57,19 @@ db = DB("kapitsa.db")
 def get_reply_json(is_ok, score=-1, id=None):
     return json.dumps( {"OK": is_ok, "score": score, "id": id})
 
+
+fields = ["department", "relatives", "social_activity", "increased_scholarship", "exam_retakes", "influenced_by", "religion", "nutrition", "lectures", "sport"]
+
+def fill_json(j):
+    for field in fields:
+        if field not in j:
+            j[field] = np.nan
+
+    j["friends"] = float(j.get("friends", -999))
+    j["exam points"] = float(j.get("exam points", -999))
+    return j
+
+
 @app.route('/get-pict')
 def process_json():
     data = request.args.get('data', '')
@@ -65,7 +78,8 @@ def process_json():
     print "Get data:", data
         
     try:
-        j = json.loads(data)
+        raw_json = json.loads(data)
+        j = fill_json(dict(raw_json))
 
         X = np.zeros(28) - 999.
         for key in departments.items():
@@ -143,10 +157,10 @@ def process_json():
         elif j["sport"] == u'Нет':
             X[25] = 0
 
-        X[26] = float(j["friends"])
-        X[27] = float(j["exam points"])
-        score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
+        X[26] = j["friends"]
+        X[27] = j["exam points"]
         print "X= ", np.array(X)
+        score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "score= ", score
 
         if np.isnan(score):
@@ -158,7 +172,7 @@ def process_json():
         traceback.print_exc()
         return get_reply_json(False)
 
-    id = db.create_record(j, list(X), score)
+    id = db.create_record(raw_json, list(X), score)
 
     return get_reply_json(True, score, id)
 
@@ -168,6 +182,6 @@ def process_feedback():
     id = request.args.get('id', '')
     status = request.args.get('status', '')
     print "Get id= %s,  status= %s" % (id, status)
-    
+
     db.update_final_status(id, status)
 
