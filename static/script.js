@@ -82,13 +82,15 @@ function submit( dict ) {
     if ( ! validate(dict) ) {
         $(".error").removeClass("hide")  
         return
+    } else {
+        $(".error").addClass("hide")
     }
     
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
     var url = '/form-submit'
-    var posting = jQuery.post(url, {json:JSON.stringify(dict)});  
+    var posting = jQuery.post(url, {json:JSON.stringify(dict)}) 
     
     posting.done(function( data ) {
         console.log( data );

@@ -21,23 +21,31 @@ app.get("/image-gen", function(req, res) {
 
 app.post("/form-submit", function(req, res) {
    // send http request get a picture url and send it back
-console.log(req.body)
+    console.log(req.body)
     http.get({
         host: 'localhost',
-	port: '5000',
+        port: '5000',
         path: '/get-pict?data=' + encodeURIComponent(req.body.json),
     }, function(response) {
         // Continuously update stream with data
 
-	var body = '';
+        var body = '';
         response.on('data', function(d) {
             body += d;
         });
         response.on('end', function() {
-	    var score = Number(body)
-
-	    var url = image_generator(score)
-	    res.send( url )
+            
+            var json = JSON.parse(body)
+            if ( json["OK"] ) {
+                var score = json["score"]
+                var id = json["id"]
+                var url = image_generator(id, score)
+                json["url"] = url
+                res.send( json )
+            } else {
+                res.send(json)
+            }
+                
         });
     });
 })
