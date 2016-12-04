@@ -20,12 +20,11 @@
             <h1 class="col-xs-6">Вероятность Капицы</h1> <img src="img/мфти.jpg" class="col-xs-3"> </div>
         <h2>Посчитай свою вероятность стать учёным!</h2>
         <p> Многие из нас, поступая на Физтех, мечтали стать учёными. По разным причинам значительная часть бросает этот тернистый путь. Нам стало интересно, какие персональные качества влияют на выбор жизненого пути - занятия наукой.</p>
-        <p> Мы собрали более 700 ответов выпускников Физтеха на 30 разнообразных вопросов про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой. Мы обнаружили, что ответы на 12 вопросов хорошо коррелируют с вероятностью связать свою жизнь с наукой. Используя ответы на эти вопросы и магию машинного обучения, мы построили модель, которая с точностью 75% предсказывает шанс остаться в науке.</p>
+        <p> Мы собрали более 700 ответов выпускников Физтеха на 30 разнообразных вопросов про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой. Мы обнаружили, что ответы на 12 вопросов хорошо коррелируют с вероятностью связать свою жизнь с наукой. Используя ответы на эти вопросы и магию машинного обучения, мы построили модель, которая с точностью 75±1% предсказывает шанс остаться в науке.</p>
         <p> Мы предлагаем Вам ответить на эти 12 вопросов и узнать свою предрасположенность к занятию наукой. Дерзайте! </p>
     </div>
     <div class="question fullscreen">
         <div class="ask cntr"> <span> Ваш факультет </span> </div>
-        <div class="explain cntr"> Факультет, в котором вы учились. </div>
         <div class="styled-select slate">
             <select name="department">
                 <option value> --- Выберите факультет --- </option>
@@ -40,12 +39,12 @@
                 <option value="ФФКЭ">ФФКЭ</option>
                 <option value="ФНБИК">ФНБИК</option>
                 <option value="Другое">Другое</option>
+                <option value="Не физтех">Я с другого ВУЗа</option>
             </select>
         </div>
     </div>
     <div class="question fullscreen">
         <div class="ask cntr"> <span> Занимается ли кто-нибудь из Ваших ближайших родственников наукой? </span> </div>
-        <div class="explain cntr"> Мама, папа, бабушка, брат, тёща, собака. </div>
         <fieldset class="form-group">
             <div class="form-check">
                 <label class="form-check-label">
@@ -102,8 +101,7 @@
         </fieldset>
     </div>
     <div class="question fullscreen">
-        <div class="ask cntr"> <span> Кто оказал на Вас наибольшее влияние? </span> </div>
-        <div class="explain cntr"> (В ЧЕМ? + добавить другое ) </div>
+        <div class="ask cntr"> <span> Кто оказал на Вас наибольшее влияние при выборе Физтеха как ВУЗа для обучения? </span> </div>
         <fieldset class="form-group">
             <div class="form-check">
                 <label class="form-check-label">
@@ -116,6 +114,10 @@
             <div class="form-check">
                 <label class="form-check-label">
                     <input type="radio" class="form-check-input" name="influenced_by" value="Любимый преподаватель"> Любимый преподаватель </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="influenced_by" value="Другое"> Другое </label>
             </div>
         </fieldset>
     </div>
@@ -163,7 +165,7 @@
         </fieldset>
     </div>
     <div class="question fullscreen">
-        <div class="ask cntr"> <span> Занимаетесь ли Вы регулярно спортом/физической активностью? </span> </div>
+        <div class="ask cntr"> <span> Занимаетесь ли Вы регулярно спортом/физической активностью на Физтехе? </span> </div>
         <div class="explain cntr"> *занимались ли, если вы уже окончили </div>
         <fieldset class="form-group">
             <div class="form-check">
@@ -177,7 +179,7 @@
         </fieldset>
     </div>
     <div class="question fullscreen">
-        <div class="ask cntr"> <span> Количество друзей в соцсети </span> </div>
+        <div class="ask cntr"> <span> Количество друзей в вашей основной соцсети </span> </div>
         <div class="explain cntr"> VK или Facebook </div>
         <section class="form-group">
             <input type="number" min="0" step="1" name="friends"> </section>
@@ -204,6 +206,7 @@
         </div>
         <bottom class=""></bottom>
     </div>
+
     </form>
     <!-- Yandex.Metrika counter -->
     <script type="text/javascript">
