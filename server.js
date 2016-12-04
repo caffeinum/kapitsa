@@ -82,10 +82,10 @@ app.post("/final", function(req, res){
             var image_url = ""
             var json = JSON.parse(body)
             
-            console.log( "body", body )
+            console.log( "json", json )
             
             if ( json["OK"] ) {
-                var score = Math.round( Number( json["score"] ) * 100 )
+                var score = json["score"]
                 var id = json["id"]
                 
                 image_url = image_generator(id, score)
@@ -93,7 +93,7 @@ app.post("/final", function(req, res){
                 image_url = "error.png"
             }
             var output = template({
-                score: score,
+                score: Math.round( Number( score ) * 100 ),
                 image_url: image_url,
                 image_id: id
             });
