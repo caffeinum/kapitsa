@@ -57,6 +57,18 @@ db = DB("kapitsa.db")
 def get_reply_json(is_ok, score=-1, id=None):
     return json.dumps( {"OK": is_ok, "score": score, "id": id})
 
+
+fields = ["department", "relatives", "social_activity", "increased_scholarship", "exam_retakes", "influenced_by", "religion", "nutrition", "lectures", "sport"]
+
+def fill_json(j):
+    for field in fields:
+        if field not in j:
+            j[field] = np.nan
+
+    j["friends"] = float(j.get("friends", np.nan))
+    j["exam points"] = float(j.get("exam points", np.nan))
+    
+
 @app.route('/get-pict')
 def process_json():
     data = request.args.get('data', '')
@@ -66,6 +78,7 @@ def process_json():
         
     try:
         j = json.loads(data)
+        j = fill_json(j)
 
         X = np.zeros(28) - 999.
         for key in departments.items():
@@ -143,8 +156,8 @@ def process_json():
         elif j["sport"] == u'Нет':
             X[25] = 0
 
-        X[26] = float(j["friends"])
-        X[27] = float(j["exam points"])
+        X[26] = j["friends"]
+        X[27] = j["exam points"]
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "X= ", np.array(X)
         print "score= ", score
@@ -168,6 +181,6 @@ def process_feedback():
     id = request.args.get('id', '')
     status = request.args.get('status', '')
     print "Get id= %s,  status= %s" % (id, status)
-    
+
     db.update_final_status(id, status)
 
