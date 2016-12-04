@@ -13,7 +13,7 @@ app.use(bodyparser.urlencoded({
     extended: true
 }))
 app.use("/", express.static(__dirname + "/static"))
-
+/*
 app.get("/image-gen", function(req, res) {
 	var url = image_generator(55)	
 
@@ -53,17 +53,10 @@ app.post("/form-submit", function(req, res) {
         });
     });
 })
-
+*/
 app.get("/", function(req, res) {
 // res.send("helloworld\n");  
 	res.sendFile( path.join(__dirname, "static/index.html") )
-})
-
-app.get("/set-answer", function(req,res) {
-    var ans = req.query.answer
-    var id = req.query.id
-    
-    // SAVE TO DB IF QUESTION IS OK
 })
 
 app.post("/final", function(req, res){
