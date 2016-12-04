@@ -148,6 +148,19 @@ samp {
     font-size: 24px;
 }
 
+.explain {
+    font-size: 14px;
+    margin-bottom: 10px;
+}
+
+.big-explain {
+    font-size: 16px;
+}
+
+.last-cntr{
+    margin-bottom: 10px
+}
+
 .vcenter {
     margin-top:50px;
 }

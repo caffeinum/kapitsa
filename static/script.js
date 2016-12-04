@@ -1,20 +1,6 @@
-leshe_json = {
-        "department": "ФОПФ",
-        "relatives": "Да",
-        "social_activity": "Да",
-        "increased_scholarships": "Да",
-        "exam_retakes": "Не больше трёх",
-        "influenced_by": "Семья",
-        "religion": "Да",
-        "nutrition": "Чаще готовил сам",
-        "lectures": "Почти всегда",
-        "sport": "Да",
-        "friends": 0,
-        "exam_points": 0
-};
 var image_url = "";
 
-var json = leshe_json
+var json = {}
 
 jQuery(function () {
         $('#image').removeClass('hide');
@@ -64,10 +50,11 @@ function collectAnswers() {
 }
 
 function sendResult() {
+    collectAnswers()
     submit( json )
 }
 
-function submit( dict ) {
+function submit( dict ) {    
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
