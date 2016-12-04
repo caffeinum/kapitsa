@@ -63,7 +63,7 @@ fields = ["department", "relatives", "social_activity", "increased_scholarship",
 def fill_json(j):
     for field in fields:
         if field not in j:
-            j[field] = -999.0 # np.nan
+            j[field] = np.nan
 
     j["friends"] = float(j.get("friends", -999))
     j["exam points"] = float(j.get("exam points", -999))
@@ -78,8 +78,8 @@ def process_json():
     print "Get data:", data
         
     try:
-        j = json.loads(data)
-        j = fill_json(j)
+        raw_json = json.loads(data)
+        j = fill_json(dict(raw_json))
 
         X = np.zeros(28) - 999.
         for key in departments.items():
@@ -172,7 +172,7 @@ def process_json():
         traceback.print_exc()
         return get_reply_json(False)
 
-    id = db.create_record(j, list(X), score)
+    id = db.create_record(raw_json, list(X), score)
 
     return get_reply_json(True, score, id)
 
