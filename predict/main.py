@@ -6,6 +6,7 @@ import numpy as np
 import json
 import csv
 import random
+import traceback
 from sklearn.ensemble import GradientBoostingClassifier
 import pickle
 
@@ -19,6 +20,8 @@ with open('clf.pickle', 'rb') as handle:
 def process_json():
     data = request.args.get('data', '')
     data = data.encode('utf-8')
+
+    print "Get data:", data
         
     with open("answers.txt", "a") as f:	
         f.write( str(data) + "\n" )
@@ -110,10 +113,10 @@ def process_json():
         X[27] = float(j["exam points"])
         print (np.array(X))
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
-	score = np.nan_to_num(score)
+        score = np.nan_to_num(score)
         print (score)
     except:
-        print "Bad data", data
+        traceback.print_exc()
         return str(-1) 
 
     values = [str(datetime.now())] + [str(i) if isinstance(i, (float, int)) else i for i in j.values()]
