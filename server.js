@@ -18,6 +18,22 @@ app.get("/", function(req, res) {
 	res.sendFile( path.join(__dirname, "static/index.html") )
 })
 
+app.get("/feedback", function(req, res) {
+    http.get({
+        host: 'localhost',
+        port: '5000',
+        path: '/feedback?id=' + req.query.id + "&status=" + req.query.status,
+    }, function( response) {
+        var body = '';
+        response.on('data', function(d) {
+            body += d;
+        });
+        response.on('end', function() {
+            res.send("Success!")    
+        });
+    })
+})
+
 app.post("/final", function(req, res){
     console.log(req.body)
     http.get({
@@ -48,7 +64,8 @@ app.post("/final", function(req, res){
             var output = template({
                 score: Math.round( 100 * score),
                 image_url: image_url,
-                image_id: id
+                image_id: id,
+                user_id: id
             });
 
             res.send(output)
