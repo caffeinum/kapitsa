@@ -2,9 +2,12 @@ var express = require('express');
 var path = require("path");
 var http = require("http");
 var bodyparser = require("body-parser")
+var swig  = require('swig');
 
 var image_generator = require("./image_gen")
 var app = express();
+
+var template = swig.compileFile( path.join(__dirname, "static/final.html") )
 
 app.use(bodyparser.urlencoded({
     extended: true
@@ -60,6 +63,14 @@ app.get("/set-answer", function(req,res) {
     var id = req.query.id
     
     // SAVE TO DB IF QUESTION IS OK
+})
+
+app.get("/final", function(req, res){
+    var output = template({
+        score: 57
+    });
+    
+    res.send(output)
 })
 
 app.listen(80, function () {
