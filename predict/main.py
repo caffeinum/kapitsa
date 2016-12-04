@@ -67,7 +67,8 @@ def fill_json(j):
 
     j["friends"] = float(j.get("friends", np.nan))
     j["exam points"] = float(j.get("exam points", np.nan))
-    
+    return j
+
 
 @app.route('/get-pict')
 def process_json():
