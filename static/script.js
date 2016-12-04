@@ -78,32 +78,40 @@ function sendResult(event) {
 function validateEGE(num) {
     if ( typeof num != "number" ) return false
     
-    return num >= 0 && num <= 100
+    return num >= 20 && num <= 100
 }
 
 function validate( dict ) {
     // REMOVE THIS WHEN PRODUCTION
-    return true
-    
-    if ( ! validateEGE( dict["exam_points_maths"] ) )
-        return false
-    if ( ! validateEGE( dict["exam_points_phys"] ) )
-        return false
-    if ( ! validateEGE( dict["exam_points_russ"] ) )
-        return false
-        
+    // return 0
+
     if ( typeof dict["friends"] != "number" )
-        return false
+        return 2
     if ( !dict["department"] )
-        return false
+        return 2
+
+    if ( ! validateEGE( dict["exam_points_maths"] ) )
+        return 1
+    if ( ! validateEGE( dict["exam_points_phys"] ) )
+        return 1
+    if ( ! validateEGE( dict["exam_points_russ"] ) )
+        return 1
         
-    return true
+
+        
+    return 0
 }
 
 function submit( dict ) {
-    if ( ! validate(dict) ) {
+    var v = validate(dict); 
+    if ( v > 0 ) {
         $(".error").removeClass("hide")  
-        return
+        if (v == 1){
+            $(".error").text("Баллы ЕГЭ должны лежать на отрезке [20, 100]")
+        } else if (v == 2){
+            $(".error").text("Не все поля заполнены или некоторые заполнены неправильно!")
+        }
+        return;
     } else {
         $(".error").addClass("hide")
     }
