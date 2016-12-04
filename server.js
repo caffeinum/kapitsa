@@ -66,8 +66,14 @@ app.get("/set-answer", function(req,res) {
 })
 
 app.get("/final", function(req, res){
+    var id = req.query.id
+    var score = req.query.score
+    var image_url = "/img/results/" + id + ".png"
+    
     var output = template({
-        score: 57
+        score: score,
+        image_url: image_url,
+        image_id: id
     });
     
     res.send(output)
@@ -80,11 +86,3 @@ app.listen(80, function () {
 process.on('uncaughtException', function (err) {
   console.log('Caught exception: ' + err);
 });
-
-setTimeout(function () {
-  console.log('This will still run.');
-}, 500);
-
-// Intentionally cause an exception, but don't catch it.
-nonexistentFunc();
-console.log('This will not run.');
