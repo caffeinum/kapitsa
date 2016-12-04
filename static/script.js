@@ -68,6 +68,9 @@ function sendResult(event) {
 }
 
 function validate( dict ) {
+    // REMOVE THIS WHEN PRODUCTION
+    return true
+    
     if ( typeof dict["exam_points"] != "number" )
         return false
     if ( typeof dict["friends"] != "number" )
