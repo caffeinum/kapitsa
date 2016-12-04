@@ -13,49 +13,8 @@ app.use(bodyparser.urlencoded({
     extended: true
 }))
 app.use("/", express.static(__dirname + "/static"))
-/*
-app.get("/image-gen", function(req, res) {
-	var url = image_generator(55)	
 
-	console.log( url )
-	console.log( path.join(__dirname, url) )
-	res.sendFile( path.join(__dirname, url) )
-})
-
-app.post("/form-submit", function(req, res) {
-   // send http request get a picture url and send it back
-    console.log(req.body)
-    http.get({
-        host: 'localhost',
-        port: '5000',
-        path: '/get-pict?data=' + encodeURIComponent(req.body.json),
-    }, function(response) {
-        // Continuously update stream with data
-
-        var body = '';
-        response.on('data', function(d) {
-            body += d;
-        });
-        response.on('end', function() {
-            
-            var json = JSON.parse(body)
-	    console.log("j", json);
-            if ( json["OK"] ) {
-                var score = Number(json["score"])
-                var id = json["id"]
-                var url = image_generator(id, score)
-                json["url"] = url
-                res.send( json )
-            } else {
-                res.send(json)
-            }
-                
-        });
-    });
-})
-*/
-app.get("/", function(req, res) {
-// res.send("helloworld\n");  
+app.get("/", function(req, res) {  
 	res.sendFile( path.join(__dirname, "static/index.html") )
 })
 
