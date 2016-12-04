@@ -178,21 +178,24 @@
     <div class="question fullscreen">
         <div class="ask cntr"> <span> Количество друзей в соцсети </span> </div>
         <div class="explain cntr"> VK или Facebook </div>
-        <section>
+        <section class="form-group">
             <input type="number" min="0" step="1" name="friends"> </section>
     </div>
     <div class="question fullscreen">
-        <div class="ask cntr"> <span> Суммарный балл ЕГЭ по трем предметам </span> </div>
+        <div class="ask cntr"> <span>
+            Суммарный балл ЕГЭ
+            </span> </div>
         <div class="big-explain cntr">
-            Математика + физика + русский язык. <br>
-            Максимальное значение - 300. </div>
+             (математика + физика + русский язык. Максимальное значение - 300.) </div>
         <div class="explain cntr">
             Если не помните, введите примерное значение. Если не было ЕГЭ, отыщите результат линейного преобразования своих баллов в шкалу от 0 до 300.
         </div>
-        <section>
-            <input type="number" min="110" max="300" step="1" name="friends"> </section>
+        <section class="form-group">
+            <input type="number" min="110" max="300" step="1" name="exam_points"> </section>
         <div class="hot-container">
-            <p> <a href="#" class="btn" onclick="sendResult()">Узнать результат</a> </p>
+            <p>
+                <a class="btn" onclick="sendResult()">Узнать результат</a>
+                <span class="error hide"> Не все поля заполнены! </span> </p>
         </div>
         <bottom class=""></bottom>
     </div>

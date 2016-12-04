@@ -132,7 +132,7 @@ samp {
 .form-check {
     padding: 5px;
 }
-.form-check: hover {
+.form-check:hover {
     background-color: azure;
 }
 .form-check input {
@@ -140,7 +140,9 @@ samp {
     margin: 5px;
 }
 
-.number {
+input[type=number] {
+    padding: 5px;
+    width: 200px;
     font-size: 32px;
 }
 
@@ -149,11 +151,14 @@ samp {
 }
 
 .explain {
+    margin-left: 20px;
     font-size: 14px;
     margin-bottom: 10px;
 }
 
 .big-explain {
+    
+    margin-left: 10px;
     font-size: 16px;
 }
 
@@ -163,6 +168,10 @@ samp {
 
 .vcenter {
     margin-top:50px;
+}
+
+.error {
+    color: red
 }
 
 .hot-container p { margin-top: 10px; }

@@ -22,6 +22,10 @@ jQuery(function () {
         collectAnswers()
     })
 
+    $(".form-check").on("click", function() {
+        $(this).find("input").select()
+    })
+    
     collectAnswers()
 })
 
@@ -35,11 +39,18 @@ function collectAnswers() {
     })
 
     $("input[type=text]").each(function (index, answer){
-        dict[ $(this).attr('name') ] = $(this).val()
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = $(this).val()
+    })
+    
+    $("input[type=number]").each(function (index, answer){
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = Number( $(this).val() )
     })
 
     $("select").each(function (index, answer){
-        dict[ $(this).attr('name') ] = $(this).val()
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = $(this).val()
     })
 
 
@@ -49,12 +60,30 @@ function collectAnswers() {
     return dict
 }
 
-function sendResult() {
+function sendResult(event) {
     collectAnswers()
     submit( json )
+    //event.stopPropagation()
+    //return false
 }
 
-function submit( dict ) {    
+function validate( dict ) {
+    if ( typeof dict["exam_points"] != "number" )
+        return false
+    if ( typeof dict["friends"] != "number" )
+        return false
+    if ( !dict["department"] )
+        return false
+        
+    return true
+}
+
+function submit( dict ) {
+    if ( ! validate(dict) ) {
+        $(".error").removeClass("hide")  
+        return
+    }
+    
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
@@ -67,6 +96,11 @@ function submit( dict ) {
         var image_url = data	
         window.location = "/final.html?image="+image_url;
     });
+    
+    posting.fail(function(error) {
+        console.log("error", error)
+        $(".error").removeClass("hide").text("Error sending")
+    })
     
     return JSON.stringify(dict)
 }
