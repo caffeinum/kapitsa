@@ -70,7 +70,7 @@ app.post("/final", function(req, res){
     http.get({
         host: 'localhost',
         port: '5000',
-        path: '/get-pict?data=' + encodeURIComponent(req.body.json),
+        path: '/get-pict?data=' + encodeURIComponent( JSON.stringify(req.body) ),
     }, function(response) {
         // Continuously update stream with data
 
