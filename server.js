@@ -85,7 +85,7 @@ app.post("/final", function(req, res){
             console.log( "body", body )
             
             if ( json["OK"] ) {
-                var score = Math.round( Number( json["score"] ) )
+                var score = Math.round( Number( json["score"] ) * 100 )
                 var id = json["id"]
                 
                 image_url = image_generator(id, score)
