@@ -162,3 +162,12 @@ def process_json():
 
     return get_reply_json(True, score, id)
 
+
+@app.route('/feedback')
+def process_feedback():
+    id = request.args.get('id', '')
+    status = request.args.get('status', '')
+    print "Get id= %s,  status= %s" % (id, status)
+    
+    db.update_final_status(id, status)
+
