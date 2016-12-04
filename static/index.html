@@ -1,59 +1,33 @@
 <!DOCTYPE html>
 <html>
 
-    <head>
-        
-        <script
-          src="https://code.jquery.com/jquery-2.2.4.min.js"
-          integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="
-          crossorigin="anonymous"></script>
-        <script type="text/javascript" src="script.js"></script>
-        
-        <meta charset="utf-8">
-        <meta http-equiv="X-UA-Compatible" content="IE=edge">
-        <title>Насколько вы КАПИЦА?</title>
-        
-        <!-- Latest compiled and minified CSS -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-        <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather|PT+Sans|Playfair+Display" rel="stylesheet">
-<!--        <link rel="stylesheet" href="checkbox.css">-->
-        <link rel="stylesheet" href="main.css">
+<head>
+    <script src="https://code.jquery.com/jquery-2.2.4.min.js" integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44=" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="script.js"></script>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Насколько вы КАПИЦА?</title>
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather|PT+Sans|Playfair+Display" rel="stylesheet">
+    <!--        <link rel="stylesheet" href="checkbox.css">-->
+    <link rel="stylesheet" href="main.css"> </head>
 
-    </head>
-    <body>
-        <img src="img/wall.jpg" class="fullscreen background">
-
-        <div class="intro fullscreen">
-            <div class="row">
-            <img src="img/logo70.png" class="col-xs-3">
-            <h1 class="col-xs-6">Вероятность Капицы</h1>
-            <img src="img/мфти.jpg" class="col-xs-3">
-            </div>
-
-            <h2>Посчитай свою вероятность стать учёным!</h2>
-
-            <p>
-                Многие из нас, поступая на Физтех, мечтали стать учёными. По разным причинам значительная часть бросает этот тернистый путь.
-                Нам стало интересно, какие персональные качества влияют на выбор жизненого пути - занятия наукой.
-            <p>
-                Мы собрали более 700 ответов выпускников Физтеха на 30 разнообразных вопросов про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой.
-                Мы обнаружили, что ответы на 12 вопросов хорошо коррелируют с вероятностью связать свою жизнь с наукой. Используя ответы на эти вопросы и магию машинного обучения, мы построили модель, которая с точностью 75% предсказывает шанс остаться в науке.
-            <p>
-                Мы предлагаем Вам ответить на эти 12 вопросов и узнать свою предрасположенность к занятию наукой. Дерзайте!
-
-            </p>
-        </div>
-
-
-        <div class="question fullscreen">
-
-
-
-            <div class="ask cntr"> <span> Ваш факультет </span> </div>
-
-            <div class="styled-select slate">
+<body> <img src="img/wall.jpg" class="fullscreen background">
+    <div class="intro fullscreen">
+        <div class="row"> <img src="img/logo70.png" class="col-xs-3">
+            <h1 class="col-xs-6">Вероятность Капицы</h1> <img src="img/мфти.jpg" class="col-xs-3"> </div>
+        <h2>Посчитай свою вероятность стать учёным!</h2>
+        <p> Многие из нас, поступая на Физтех, мечтали стать учёными. По разным причинам значительная часть бросает этот тернистый путь. Нам стало интересно, какие персональные качества влияют на выбор жизненого пути - занятия наукой.</p>
+        <p> Мы собрали более 700 ответов выпускников Физтеха на 30 разнообразных вопросов про их жизнь. Примерно половина из этих выпускников сейчас занимаются наукой. Мы обнаружили, что ответы на 12 вопросов хорошо коррелируют с вероятностью связать свою жизнь с наукой. Используя ответы на эти вопросы и магию машинного обучения, мы построили модель, которая с точностью 75% предсказывает шанс остаться в науке.</p>
+        <p> Мы предлагаем Вам ответить на эти 12 вопросов и узнать свою предрасположенность к занятию наукой. Дерзайте! </p>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Ваш факультет </span> </div>
+        <div class="explain cntr"> Факультет, в котором вы учились. </div>
+        <div class="styled-select slate">
             <select name="department">
-                <option>---Выберите факультет---</option>
+                <option value> --- Выберите факультет --- </option>
                 <option value="ФОПФ">ФОПФ</option>
                 <option value="ФИВТ">ФИВТ</option>
                 <option value="ФУПМ">ФУПМ</option>
@@ -66,261 +40,198 @@
                 <option value="ФНБИК">ФНБИК</option>
                 <option value="Другое">Другое</option>
             </select>
-            </div>
-
         </div>
-
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Занимается ли кто-нибудь из Ваших ближайших родственников наукой? </span> </div>
-
-            <fieldset class="form-group">
-                <div class="form-check">
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Занимается ли кто-нибудь из Ваших ближайших родственников наукой? </span> </div>
+        <div class="explain cntr"> Мама, папа, бабушка, брат, тёща, собака. </div>
+        <fieldset class="form-group">
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="relatives" value="Да"
-                       >
-                Да
-                </label>
-                </div>
-                <div class="form-check">
+                    <input type="radio" class="form-check-input" name="relatives" value="Да"> Да </label>
+            </div>
+            <div class="form-check">
                 <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="relatives"  value="Нет" >
-                Нет
-                </label>
-                </div>
-            </fieldset>
-
-
-
+                    <input type="radio" class="form-check-input" name="relatives" value="Нет"> Нет </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Участвовали ли Вы в общественной деятельности на Физтехе? </span> </div>
+        <div class="explain cntr"> Студсоветы, профком, студенческие театр и пр. </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="social_activity" value="Да"> Да </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="social_activity" value="Нет"> Нет </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Получали ли Вы повышенную стипендию? </span> </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="increased_scholarship" value="Да"> Да </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="increased_scholarship" value="Нет"> Нет </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Сколько пересдач у Вас было? </span> </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="exam_retakes" value="Не было ни одной"> Не было ни одной </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="exam_retakes" value="Не больше трёх"> Не больше трёх </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="exam_retakes" value="Больше трёх"> Больше трёх </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Кто оказал на Вас наибольшее влияние? </span> </div>
+        <div class="explain cntr"> (В ЧЕМ? + добавить другое ) </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="influenced_by" value="Семья"> Семья </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="influenced_by" value="Кто-то из друзей"> Кто-то из друзей </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="influenced_by" value="Любимый преподаватель"> Любимый преподаватель </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Считаете ли Вы себя религиозным человеком? </span> </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="religion" value="Да"> Скорее да </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="religion" value="Нет"> Скорее нет </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Как Вы питались на физтехе? </span> </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="nutrition" value="Чаще готовил сам"> Чаще готовил сам </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="nutrition" value="Чаще обедал в столовой"> Чаще обедал в столовой </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Посещали ли Вы лекции? </span> </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="lectures" value="Почти всегда"> Почти всегда </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="lectures" value="Посетил примерно половину"> Посетил примерно половину </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="lectures" value="Очень редко"> Очень редко </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Занимаетесь ли Вы регулярно спортом/физической активностью? </span> </div>
+        <div class="explain cntr"> *занимались ли, если вы уже окончили </div>
+        <fieldset class="form-group">
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="sport" value="Да"> Да </label>
+            </div>
+            <div class="form-check">
+                <label class="form-check-label">
+                    <input type="radio" class="form-check-input" name="sport" value="Нет"> Нет </label>
+            </div>
+        </fieldset>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Количество друзей в соцсети </span> </div>
+        <div class="explain cntr"> VK или Facebook </div>
+        <section>
+            <input type="number" min="0" step="1" name="friends"> </section>
+    </div>
+    <div class="question fullscreen">
+        <div class="ask cntr"> <span> Суммарный балл ЕГЭ по трем предметам </span> </div>
+        <div class="big-explain cntr">
+            Математика + физика + русский язык. <br>
+            Максимальное значение - 300. </div>
+        <div class="explain cntr">
+            Если не помните, введите примерное значение. Если не было ЕГЭ, отыщите результат линейного преобразования своих баллов в шкалу от 0 до 300.
         </div>
-            <div class="question fullscreen">
-
-            <div class="ask cntr"> <span> Участвовали ли Вы в общественной деятельности на Физтехе? (Студсоветы, профком, студенческие театр и пр.) </span> </div>
-
-            <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="social_activity" value="Да"
-                       >
-                Да
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="social_activity"  value="Нет" >
-                Нет
-                </label>
-                </div>
-            </fieldset>
-
-        </div>
-                <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Получали ли Вы повышенную стипендию? </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="increased_scholarship" value= "Да"
-                       >
-                Да
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="increased_scholarship"  value= "Нет" >
-                Нет
-                </label>
-                </div>
-            </fieldset>
-
-
-
-        </div>
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Сколько пересдач у Вас было? </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="exam_retakes" value="Не было ни одной"
-                       >
-                Не было ни одной
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="exam_retakes" value="Не больше трёх"
-                       >
-                Не больше трёх
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="exam_retakes"  value="Больше трёх" >
-                Больше трёх
-                </label>
-                </div>
-            </fieldset>
-        </div>
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Кто оказал на Вас наибольшее влияние? (В ЧЕМ? + добавить другое ) </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="influenced_by" value="Семья"
-                       >
-                Семья
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="influenced_by"  value="Кто-то из друзей" >
-                Кто-то из друзей
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="influenced_by" value="Любимый преподаватель"
-                       >
-                Любимый преподаватель
-                </label>
-                </div>
-            </fieldset>
-            </div>
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Считаете ли Вы себя религиозным человеком? </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="religion" value="Да"
-                       >
-                Скорее да
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="religion"  value="Нет" >
-                Скорее нет
-                </label>
-                </div>
-            </fieldset>
-            </div>
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Как Вы питались на физтехе? </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="nutrition" value="Чаще готовил сам"
-                       >
-                Чаще готовил сам
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="nutrition"  value="Чаще обедал в столовой" >
-                Чаще обедал в столовой
-                </label>
-                </div>
-            </fieldset>
-            </div>
-
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Посещали ли Вы лекции? </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="lectures" value="Почти всегда"
-                       >
-                Почти всегда
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="lectures" value="Посетил примерно половину"
-                       >
-                Посетил примерно половину
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="lectures"  value="Очень редко">
-                Очень редко
-                </label>
-                </div>
-            </fieldset>
-            </div>
-
-            <div class="question fullscreen">
-            
-
-            <div class="ask cntr"> <span> Занимаетесь ли Вы регулярно спортом/физической активностью? (НА ФИЗТЕХЕ) </span> </div>
-
-             <fieldset class="form-group">
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="sport" value="Да"
-                       >
-                Да
-                </label>
-                </div>
-                <div class="form-check">
-                <label class="form-check-label">
-                <input type="radio" class="form-check-input" name="sport"  value="Нет">
-                Нет
-                </label>
-                </div>
-            </fieldset>
-            </div>
-
-            <div class="question fullscreen">
-
-            <div class="ask cntr"> <span> Количество друзей в соцсети (СНАЧАЛА В ВК, ЕСЛИ НЕТ ТО ФБ)</span> </div>
-
-            <section>
-                    <input type="number" min="0" step="1" name="friends" >
-            </section>
-            </div>
-
-            <div class="question fullscreen">
-
-            <div class="ask cntr"> <span> Суммарный балл ЕГЭ по трем предметам: математика + физика + русский язык (максимальное значение 300) </span> </div>
-
-            <section>
-                    <input type="number" min="110" max="300" step="1" name="friends" >
-            </section>
-
-
+        <section>
+            <input type="number" min="110" max="300" step="1" name="friends"> </section>
         <div class="hot-container">
-           <p>
-                <a href="#" class="btn" onclick="sendResult()">Узнать результат</a>
-           </p>
-
+            <p> <a href="#" class="btn" onclick="sendResult()">Узнать результат</a> </p>
         </div>
+        <bottom class=""></bottom>
+    </div>
+    <!-- Yandex.Metrika counter -->
+    <script type="text/javascript">
+        (function (d, w, c) {
+            (w[c] = w[c] || []).push(function () {
+                try {
+                    w.yaCounter41352704 = new Ya.Metrika({
+                        id: 41352704
+                        , clickmap: true
+                        , trackLinks: true
+                        , accurateTrackBounce: true
+                        , webvisor: true
+                        , trackHash: true
+                    });
+                }
+                catch (e) {}
+            });
+            var n = d.getElementsByTagName("script")[0]
+                , s = d.createElement("script")
+                , f = function () {
+                    n.parentNode.insertBefore(s, n);
+                };
+            s.type = "text/javascript";
+            s.async = true;
+            s.src = "https://mc.yandex.ru/metrika/watch.js";
+            if (w.opera == "[object Opera]") {
+                d.addEventListener("DOMContentLoaded", f, false);
+            }
+            else {
+                f();
+            }
+        })(document, window, "yandex_metrika_callbacks");
+    </script>
+    <noscript>
+        <div><img src="https://mc.yandex.ru/watch/41352704" style="position:absolute; left:-9999px;" alt="" /></div>
+    </noscript>
+    <!-- /Yandex.Metrika counter -->
+</body>
 
-            <bottom class=""></bottom>
-
-        </div>
-    </body>
 </html>
