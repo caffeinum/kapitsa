@@ -3,10 +3,8 @@ from flask import Flask
 from flask import request
 from datetime import datetime
 import numpy as np
-import json
-import csv
-import random
-import traceback
+import os.path
+import json, random, traceback, sqlite3, uuid, shutil
 from sklearn.ensemble import GradientBoostingClassifier
 import pickle
 
@@ -16,6 +14,49 @@ departments = {u'ФОПФ' : 0, u'ФИВТ' : 1, u'ФУПМ' : 2, u'ФАКИ' : 
 with open('clf.pickle', 'rb') as handle:
     clf = pickle.load(handle)
 
+
+def get_date():
+    return str(datetime.now())
+
+
+class DB(object):
+    def __init__(self, filename):
+        if os.path.isfile(filename):
+            shutil.copy(filename, "backup_" + filename)
+
+        self.conn = sqlite3.connect(filename)
+        self._try_create_table()
+
+    def _try_create_table(self):
+        with self.conn:
+            self.conn.execute('''CREATE TABLE IF NOT EXISTS users (date text, id text, json text, vector text, final_status text, score real)''')
+
+    def _get_random_id(self):
+        return str(uuid.uuid4()).split("-")[0]
+
+    def create_record(self, json_data, vector, score):
+        json_str = json.dumps(json_data)
+        vector_str = str(vector)
+        id = self._get_random_id()        
+
+        with self.conn:
+            self.conn.execute('''INSERT INTO users (date, id, json, vector, score) VALUES (?, ?, ?, ?, ?)''', 
+            (get_date(), id, json_str, vector_str, score) )
+
+        return id
+
+    def update_final_status(self, id, status):
+        with self.conn:
+            self.conn.execute('''UPDATE users SET final_status = ? WHERE id = ?''', (status, id) )
+
+
+db = DB("kapitsa.db")
+# id = db.create_record('test', 1)
+# db.update_final_status(id, "i was fucked")
+
+def get_reply_json(is_ok, score=-1, id=None):
+    return json.dumps( {"OK": is_ok, "score": score, "id": id})
+
 @app.route('/get-pict')
 def process_json():
     data = request.args.get('data', '')
@@ -23,16 +64,9 @@ def process_json():
 
     print "Get data:", data
         
-    with open("answers.txt", "a") as f:	
-        f.write( str(data) + "\n" )
-
     try:
         j = json.loads(data)
-    except:
-        print "Bad json", data
-        return str(-1)
 
-    try:
         X = np.zeros(28) - 999.
         for key in departments.items():
             X[key[1]] = 0.
@@ -111,18 +145,20 @@ def process_json():
 
         X[26] = float(j["friends"])
         X[27] = float(j["exam points"])
-        print (np.array(X))
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
-        score = np.nan_to_num(score)
-        print (score)
+        print "X= ", np.array(X)
+        print "score= ", score
+
+        if np.isnan(score):
+            print "Err: score is nan"
+            return get_reply_json(False)
+
+        score = str(np.clip(score, 0.05, 0.95))
     except:
         traceback.print_exc()
-        return str(-1) 
+        return get_reply_json(False)
 
-    values = [str(datetime.now())] + [str(i) if isinstance(i, (float, int)) else i for i in j.values()]
-    answer_line = u",".join( values )
+    id = db.create_record(j, list(X), score)
 
-    with open("answers.csv", "a") as f:
-        f.write( answer_line.encode('utf-8') + "\n" )
+    return get_reply_json(True, score, id)
 
-    return str(np.clip(score, 0.05, 0.95))
