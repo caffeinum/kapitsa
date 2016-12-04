@@ -65,7 +65,7 @@ app.get("/set-answer", function(req,res) {
     // SAVE TO DB IF QUESTION IS OK
 })
 
-app.get("/final", function(req, res){
+app.post("/final", function(req, res){
     console.log(req.body)
     http.get({
         host: 'localhost',
