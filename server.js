@@ -39,8 +39,9 @@ app.post("/form-submit", function(req, res) {
         response.on('end', function() {
             
             var json = JSON.parse(body)
+	    console.log("j", json);
             if ( json["OK"] ) {
-                var score = json["score"]
+                var score = Number(json["score"])
                 var id = json["id"]
                 var url = image_generator(id, score)
                 json["url"] = url
@@ -85,7 +86,7 @@ app.post("/final", function(req, res){
             console.log( "body", body )
             
             if ( json["OK"] ) {
-                var score = Math.round( Number( json["score"] ) * 100 )
+                var score =  Number( json["score"] )
                 var id = json["id"]
                 
                 image_url = image_generator(id, score)
@@ -93,7 +94,7 @@ app.post("/final", function(req, res){
                 image_url = "error.png"
             }
             var output = template({
-                score: score,
+                score: Math.round( 100 * score),
                 image_url: image_url,
                 image_id: id
             });
