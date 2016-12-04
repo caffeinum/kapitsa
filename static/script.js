@@ -30,9 +30,7 @@ jQuery(function () {
     
     $(".feedback .btn").click(function () {
         var status = $(this).text()
-        
-        alert( user_id )
-        
+
         $.get("/feedback", {id: user_id, status: status})
     })
     
