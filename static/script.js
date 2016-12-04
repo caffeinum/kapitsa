@@ -95,7 +95,7 @@ function submit( dict ) {
     posting.done(function( data ) {
         console.log( data );
     	
-        var image_url = data	
+        var image_url = data["url"]
         window.location = "/final.html?image="+image_url;
     });
     
