@@ -73,11 +73,11 @@ function generator(id, grade) {
 	drawKapitsa(ctx, grade*100)
     
     if( ! checkString(id) ) {
-       return '/img/error.png'
+       return 'error.png'
     }
 	
-	var path = '/img/results/' + id + '.png'
-	fs.writeFileSync(__dirname + "/static" + path, canvas.toBuffer());
+	var path = 'results/' + id + '.png'
+	fs.writeFileSync(__dirname + "/static/img/" + path, canvas.toBuffer());
 	
 	return path;
 }

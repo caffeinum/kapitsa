@@ -66,17 +66,40 @@ app.get("/set-answer", function(req,res) {
 })
 
 app.get("/final", function(req, res){
-    var id = req.query.id
-    var score = req.query.score
-    var image_url = "/img/results/" + id + ".png"
-    
-    var output = template({
-        score: score,
-        image_url: image_url,
-        image_id: id
+    console.log(req.body)
+    http.get({
+        host: 'localhost',
+        port: '5000',
+        path: '/get-pict?data=' + encodeURIComponent(req.body.json),
+    }, function(response) {
+        // Continuously update stream with data
+
+        var body = '';
+        response.on('data', function(d) {
+            body += d;
+        });
+        response.on('end', function() {
+            var image_url = ""
+            var json = JSON.parse(body)
+            if ( json["OK"] ) {
+                var score = json["score"]
+                var id = json["id"]
+                
+                image_url = image_generator(id, score)
+            } else {
+                image_url = "error.png"
+            }
+            var output = template({
+                score: score,
+                image_url: image_url,
+                image_id: id
+            });
+
+            res.send(output)
+                
+        });
     });
-    
-    res.send(output)
+
 })
 
 app.listen(80, function () {

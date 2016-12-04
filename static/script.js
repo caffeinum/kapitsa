@@ -89,14 +89,21 @@ function submit( dict ) {
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
+    $('form').submit()
+    return
+    
     var url = '/form-submit'
+    
+    
     var posting = jQuery.post(url, {json:JSON.stringify(dict)}) 
     
     posting.done(function( data ) {
         console.log( data );
     	
         var image_url = data["url"]
-        window.location = "/final.html?image="+image_url;
+        var id = data["id"]
+        var score = data["score"]
+        window.location = "/final?id="+id+"&score="+score;
     });
     
     posting.fail(function(error) {
