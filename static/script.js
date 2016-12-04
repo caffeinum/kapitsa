@@ -22,6 +22,18 @@ jQuery(function () {
         collectAnswers()
     })
 
+    $(".form-check").on("click", function() {
+        $(this).find("input").select()
+    })
+    
+    var user_id = $(".feedback").data("user-id")
+    
+    $(".feedback .btn").click(function () {
+        var status = $(this).text()
+
+        $.get("/feedback", {id: user_id, status: status})
+    })
+    
     collectAnswers()
 })
 
@@ -35,11 +47,18 @@ function collectAnswers() {
     })
 
     $("input[type=text]").each(function (index, answer){
-        dict[ $(this).attr('name') ] = $(this).val()
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = $(this).val()
+    })
+    
+    $("input[type=number]").each(function (index, answer){
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = Number( $(this).val() )
     })
 
     $("select").each(function (index, answer){
-        dict[ $(this).attr('name') ] = $(this).val()
+        if ( $(this).val() )
+            dict[ $(this).attr('name') ] = $(this).val()
     })
 
 
@@ -49,24 +68,59 @@ function collectAnswers() {
     return dict
 }
 
-function sendResult() {
+function sendResult(event) {
     collectAnswers()
     submit( json )
+    //event.stopPropagation()
+    //return false
 }
 
-function submit( dict ) {    
+function validate( dict ) {
+    // REMOVE THIS WHEN PRODUCTION
+    return true
+    
+    if ( typeof dict["exam_points"] != "number" )
+        return false
+    if ( typeof dict["friends"] != "number" )
+        return false
+    if ( !dict["department"] )
+        return false
+        
+    return true
+}
+
+function submit( dict ) {
+    if ( ! validate(dict) ) {
+        $(".error").removeClass("hide")  
+        return
+    } else {
+        $(".error").addClass("hide")
+    }
+    
     console.log(dict)
     console.log( JSON.stringify(dict) )
     
+    $('form').submit()
+    return
+    
     var url = '/form-submit'
-    var posting = jQuery.post(url, {json:JSON.stringify(dict)});  
+    
+    
+    var posting = jQuery.post(url, {json:JSON.stringify(dict)}) 
     
     posting.done(function( data ) {
         console.log( data );
     	
-        var image_url = data	
-        window.location = "/final.html?image="+image_url;
+        var image_url = data["url"]
+        var id = data["id"]
+        var score = data["score"]
+        window.location = "/final?id="+id+"&score="+score;
     });
+    
+    posting.fail(function(error) {
+        console.log("error", error)
+        $(".error").removeClass("hide").text("Error sending")
+    })
     
     return JSON.stringify(dict)
 }

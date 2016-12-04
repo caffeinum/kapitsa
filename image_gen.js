@@ -66,16 +66,25 @@ function drawKapitsa(ctx, grade) {
 	drawGrade(grade)
 }
 
-function generator(grade) {
+function generator(id, grade) {
 	canvas = new Canvas(width, height)
 	
 	ctx = canvas.getContext('2d')
 	drawKapitsa(ctx, grade*100)
+    
+    if( ! checkString(id) ) {
+       return 'error.png'
+    }
 	
-	var path = '/img/results/' + randomString(8) + '.png'
-	fs.writeFileSync(__dirname + "/static" + path, canvas.toBuffer());
+	var path = 'results/' + id + '.png'
+	fs.writeFileSync(__dirname + "/static/img/" + path, canvas.toBuffer());
 	
 	return path;
+}
+
+function checkString(identifier) {
+    var letters = /^[0-9a-zA-Z]+$/;
+    return letters.test(identifier)
 }
 
 function randomString(N) {
