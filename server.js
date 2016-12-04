@@ -83,7 +83,7 @@ app.post("/final", function(req, res){
             var image_url = ""
             var json = JSON.parse(body)
             
-            console.log( "body", body )
+            console.log( "json", json )
             
             if ( json["OK"] ) {
                 var score =  Number( json["score"] )
