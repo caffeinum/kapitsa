@@ -142,8 +142,9 @@ samp {
 
 input[type=number] {
     padding: 5px;
-    width: 200px;
-    font-size: 32px;
+    margin-right: 10px;
+    width: 180px;
+    font-size: 24px;
 }
 
 .ask {
@@ -172,6 +173,10 @@ input[type=number] {
 
 .error {
     color: red
+}
+
+.feedback {
+    text-align: center
 }
 
 .hot-container p { margin-top: 10px; }

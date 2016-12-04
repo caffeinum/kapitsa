@@ -29,7 +29,7 @@ jQuery(function () {
     var user_id = $(".feedback").data("user-id")
     
     $(".feedback .btn").click(function () {
-        var status = $(this).text()
+        var status = $(this).data("value")
 
         $.get("/feedback", {id: user_id, status: status})
     })
@@ -99,6 +99,11 @@ function submit( dict ) {
     
     console.log(dict)
     console.log( JSON.stringify(dict) )
+    
+    dict["exam_points"] =
+        dict["exam_points_maths"] + 
+        dict["exam_points_phys"] + 
+        dict["exam_points_russ"] 
     
     $('form').submit()
     return

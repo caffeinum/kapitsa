@@ -184,15 +184,19 @@
     </div>
     <div class="question fullscreen">
         <div class="ask cntr"> <span>
-            Суммарный балл ЕГЭ
+            Баллы ЕГЭ
             </span> </div>
+<!--
         <div class="big-explain cntr">
-             (математика + физика + русский язык. Максимальное значение - 300.) </div>
+             математика, физика(информатика), русский язык </div>
+-->
         <div class="explain cntr">
-            Если не помните, введите примерное значение. Если не было ЕГЭ, отыщите результат линейного преобразования своих баллов в шкалу от 0 до 300.
+            Если не помните, введите примерное значение. Если не было ЕГЭ, отыщите результат линейного преобразования своих баллов в шкалу от 0 до 300. Если не сдавали физику, впишите балл по информатике.
         </div>
         <section class="form-group">
-            <input type="number" min="110" max="300" step="1" name="exam_points"> </section>
+            <input type="number" min="110" max="300" step="1" name="exam_points_maths" placeholder="Математика">
+            <input type="number" min="110" max="300" step="1" name="exam_points_phys" placeholder="Физика">
+            <input type="number" min="110" max="300" step="1" name="exam_points_russ" placeholder="Русский"> </section>
         <div class="hot-container">
             <p>
                 <a class="btn" onclick="sendResult()">Узнать результат</a>
