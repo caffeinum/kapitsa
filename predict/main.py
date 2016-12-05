@@ -153,4 +153,5 @@ def process_feedback():
     print "Get id= %s,  status= %s" % (id, status)
 
     db.update_final_status(id, status)
+    return "OK"
 
