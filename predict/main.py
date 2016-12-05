@@ -5,15 +5,13 @@ from datetime import datetime
 import numpy as np
 import os.path
 import json, random, traceback, sqlite3, uuid, shutil
-from sklearn.ensemble import GradientBoostingClassifier
 import pickle
 
 app = Flask(__name__)
-departments = {u'ФОПФ' : 0, u'ФИВТ' : 1, u'ФУПМ' : 2, u'ФАКИ' : 3, u'ФАЛТ' : 4, u'ФПФЭ' : 5, u'ФРТК' : 6, u'ФМХФ/ФБМФ' : 7,
-        u'ФФКЭ' : 8, u'ФНБИК' : 9, u'Другое' : 10}
-with open('clf.pickle', 'rb') as handle:
-    clf = pickle.load(handle)
 
+def load_clf():
+    global clf
+    clf = pickle.load(open('clf.pickle', 'rb'))
 
 def get_date():
     return str(datetime.now())
@@ -51,6 +49,7 @@ class DB(object):
 
 
 db = DB("kapitsa.db")
+load_clf()
 # id = db.create_record('test', 1)
 # db.update_final_status(id, "i was fucked")
 
@@ -65,9 +64,49 @@ def fill_json(j):
         if field not in j:
             j[field] = np.nan
 
-    j["friends"] = float(j.get("friends", -999))
-    j["exam points"] = float(j.get("exam points", -999))
+    j["friends"] = float(j.get("friends", np.nan))
+    j["exam points"] = float(j.get("exam points", np.nan))
     return j
+
+
+deps = ['ФОПФ', 'ФИВТ', 'ФУПМ', 'ФАКИ', 'ФАЛТ', 'ФПФЭ', 'ФРТК', 'ФМХФ/ФБМФ', 'ФФКЭ', 'ФНБИК', 'Другое']
+
+def json_to_vec(j):
+    def find(x, pattern):
+        x = j[x]
+        if isnan(x):
+            return x
+        return pattern in x
+    
+    def find_ind(x, _list):
+        x = j[x]
+        if isnan(x):
+            return x
+        for i in xrange(len(_list)):
+            if _list[i] in x:
+                return i
+        return np.nan
+    
+    X = np.zeros(24)
+    if j["department"] in deps:
+        X[deps.index(j["department"])] = 1
+    
+    i = len(deps)
+    X[i] = find("relatives", "Да"); i+= 1
+    X[i] = find("social_activity", "Да"); i+= 1
+    X[i] = find("increased_scholarship", "Да"); i+= 1
+    X[i] = find_ind("exam_retakes", ["Не было", "Не больше", "Больше"]); i+= 1
+    X[i] = find_ind("influenced_by", ["емья", "друз", "препод"]); i+= 1
+    X[i] = find("religion", "Да"); i+= 1
+    X[i] = find("nutrition", "столов"); i+= 1
+    X[i] = find_ind("lectures", ["всегд", "полов", "редко"]); i+= 1
+    X[i] = find("sport", "Да"); i+= 1
+    
+    X[i] = j["friends"]; i+= 1
+    X[i] = j["exam_points_maths"]; i+= 1
+    X[i] = j["exam_points_phys"]; i += 1
+    X[i] = j["exam_points_russ"]; i+= 1
+    return X
 
 
 @app.route('/get-pict')
@@ -80,86 +119,7 @@ def process_json():
     try:
         raw_json = json.loads(data)
         j = fill_json(dict(raw_json))
-
-        X = np.zeros(28) - 999.
-        for key in departments.items():
-            X[key[1]] = 0.
-            if j["department"] == key[0]:
-                X[key[1]] = 1.
-
-        #11 column for relatives
-        if j["relatives"] == u'Да':
-            X[11] = 1
-        elif j["relatives"] == u'Нет':
-            X[11] = 0
-
-        #12 column for social activity
-        X[12] = 0
-        if j["social_activity"] == u'Нет':
-            X[12] = 1
-
-
-        #13 column for grant
-        if j["increased_scholarship"] == u'Да':
-            X[13] = 1
-        elif j["increased_scholarship"] == u'Нет':
-            X[13] = 0
-
-        #14, 15, 16 column for retakes
-        X[14] = 0
-        X[15] = 0
-        X[16] = 0
-        if j["exam_retakes"] == u'Не больше трёх':
-            X[14] = 1
-        elif j["exam_retakes"] == u'Больше трёх':
-            X[15] = 1
-        elif j["exam_retakes"] == u'Не было ни одной':
-            X[16] = 1
-
-        #17, 18, 19 column for influence
-        X[17] = 0
-        X[18] = 0
-        X[19] = 0
-        if j["influenced_by"] == u'Любимый преподаватель':
-            X[17] = 1
-        elif j["influenced_by"] == u'Семья':
-            X[18] = 1
-        elif j["influenced_by"] == u'Кто-то из друзей':
-            X[19] = 1
-
-        #20 column for religy
-        if j["religion"] == u'Да':
-            X[20] = 1
-        elif j["religion"] == u'Нет':
-            X[20] = 0
-
-        #21 column for foor
-        if j["nutrition"] == u'Чаще обедал в столовой':
-            X[21] = 1
-        elif j["nutrition"] == u'Чаще готовил сам':
-            X[21] = 0
-
-        #22, 23, 24 column for lectures
-        X[22] = 0
-        X[23] = 0
-        X[24] = 0
-        if j["lectures"] == u'Посетил примерно половину':
-            X[22] = 1
-        elif j["lectures"] == u'Очень редко':
-            X[23] = 1
-        elif j["lectures"] == u'Почти всегда':
-            X[24] = 1
-
-
-        #25 column for sport
-        if j["sport"] == u'Да':
-            X[25] = 1
-        elif j["sport"] == u'Нет':
-            X[25] = 0
-
-        X[26] = j["friends"]
-        X[27] = j["exam points"]
-        print "X= ", np.array(X)
+        X = json_to_vec(j)
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "score= ", score
 
@@ -168,13 +128,14 @@ def process_json():
             return get_reply_json(False)
 
         score = str(np.clip(score, 0.05, 0.95))
+
+        id = db.create_record(raw_json, list(X), score)
+        return get_reply_json(True, score, id)
     except:
         traceback.print_exc()
         return get_reply_json(False)
 
-    id = db.create_record(raw_json, list(X), score)
-
-    return get_reply_json(True, score, id)
+    
 
 
 @app.route('/feedback')
