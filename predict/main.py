@@ -16,6 +16,13 @@ def load_clf():
 def get_date():
     return str(datetime.now())
 
+def isnan(x):
+    if x is None:
+        return True
+    if type(x) is float:
+        return np.isnan(x)
+    return False
+
 
 class DB(object):
     def __init__(self, filename):
@@ -123,7 +130,7 @@ def process_json():
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "score= ", score
 
-        if np.isnan(score):
+        if isnan(score):
             print "Err: score is nan"
             return get_reply_json(False)
 
