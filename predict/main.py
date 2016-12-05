@@ -76,7 +76,7 @@ def fill_json(j):
     return j
 
 
-deps = ['ФОПФ', 'ФИВТ', 'ФУПМ', 'ФАКИ', 'ФАЛТ', 'ФПФЭ', 'ФРТК', 'ФМХФ/ФБМФ', 'ФФКЭ', 'ФНБИК', 'Другое']
+deps = [u'ФОПФ', u'ФИВТ', u'ФУПМ', u'ФАКИ', u'ФАЛТ', u'ФПФЭ', u'ФРТК', u'ФМХФ/ФБМФ', u'ФФКЭ', u'ФНБИК', u'Другое']
 
 def json_to_vec(j):
     def find(x, pattern):
@@ -99,15 +99,15 @@ def json_to_vec(j):
         X[deps.index(j["department"])] = 1
     
     i = len(deps)
-    X[i] = find("relatives", "Да"); i+= 1
-    X[i] = find("social_activity", "Да"); i+= 1
-    X[i] = find("increased_scholarship", "Да"); i+= 1
-    X[i] = find_ind("exam_retakes", ["Не было", "Не больше", "Больше"]); i+= 1
-    X[i] = find_ind("influenced_by", ["емья", "друз", "препод"]); i+= 1
-    X[i] = find("religion", "Да"); i+= 1
-    X[i] = find("nutrition", "столов"); i+= 1
-    X[i] = find_ind("lectures", ["всегд", "полов", "редко"]); i+= 1
-    X[i] = find("sport", "Да"); i+= 1
+    X[i] = find("relatives", u"Да"); i+= 1
+    X[i] = find("social_activity", u"Да"); i+= 1
+    X[i] = find("increased_scholarship", u"Да"); i+= 1
+    X[i] = find_ind("exam_retakes", [u"Не было", u"Не больше", u"Больше"]); i+= 1
+    X[i] = find_ind("influenced_by", [u"емья", u"друз", u"препод"]); i+= 1
+    X[i] = find("religion", u"Да"); i+= 1
+    X[i] = find("nutrition", u"столов"); i+= 1
+    X[i] = find_ind("lectures", [u"всегд", u"полов", u"редко"]); i+= 1
+    X[i] = find("sport", u"Да"); i+= 1
     
     X[i] = j["friends"]; i+= 1
     X[i] = j["exam_points_maths"]; i+= 1
