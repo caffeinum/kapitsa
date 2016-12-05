@@ -148,10 +148,14 @@ def process_json():
 
 @app.route('/feedback')
 def process_feedback():
-    id = request.args.get('id', '')
-    status = request.args.get('status', '')
-    print "Get id= %s,  status= %s" % (id, status)
+    try:
+        id = request.args.get('id', '')
+        status = request.args.get('status', '')
+        print "Get id= %s,  status= %s" % (id, status)
 
-    db.update_final_status(id, status)
+        db.update_final_status(id, status)
+    except:
+        traceback.print_exc()
+    
     return "OK"
 
