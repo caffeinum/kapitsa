@@ -127,6 +127,7 @@ def process_json():
         raw_json = json.loads(data)
         j = fill_json(dict(raw_json))
         X = json_to_vec(j)
+        print "X=", X
         score = clf.predict_proba(X.reshape(1,-1))[:,1][0]
         print "score= ", score
 
