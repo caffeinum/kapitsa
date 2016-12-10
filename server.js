@@ -14,9 +14,6 @@ app.use(bodyparser.urlencoded({
 }))
 app.use("/", express.static(__dirname + "/static"))
 
-app.get("/", function(req, res) {  
-	res.sendFile( path.join(__dirname, "static/index.html") )
-})
 
 app.get("/feedback", function(req, res) {
     http.get({
@@ -73,6 +70,10 @@ app.post("/final", function(req, res){
         });
     });
 
+})
+
+app.get("*", function(req, res) {  
+    res.sendFile( path.join(__dirname, "static/index.html") )
 })
 
 app.listen(80, function () {
