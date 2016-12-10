@@ -75,19 +75,23 @@ function sendResult(event) {
     //return false
 }
 
-function validateEGE(num) {
-    if ( typeof num != "number" ) return false
-    
-    return num >= 20 && num <= 100
+function check_range(num, a, b){
+    if ( typeof num != "number" ) return false;
+    return num >= a && num <= b
 }
+
+function validateEGE(num) {
+    return check_range(num, 20, 100)
+}
+
 
 function validate( dict ) {
     // REMOVE THIS WHEN PRODUCTION
     // return 0
 
-    if ( typeof dict["friends"] != "number" )
+    if ( ! check_range(dict["friends"], 0, 100000))
         return 2
-    if ( !dict["department"] )
+    if ( ! dict["department"] )
         return 2
 
     if ( ! validateEGE( dict["exam_points_maths"] ) )
@@ -96,9 +100,10 @@ function validate( dict ) {
         return 1
     if ( ! validateEGE( dict["exam_points_russ"] ) )
         return 1
-        
 
-        
+    if ( ! check_range(dict["final_year"], 1940, 2030))
+        return 3
+
     return 0
 }
 
@@ -108,9 +113,14 @@ function submit( dict ) {
         $(".error").removeClass("hide")  
         if (v == 1){
             $(".error").text("Баллы ЕГЭ должны лежать на отрезке [20, 100]")
-        } else if (v == 2){
+        }
+        if (v == 2){
             $(".error").text("Не все поля заполнены или некоторые заполнены неправильно!")
         }
+        if (v == 3){
+            $(".error").text("Год выпуска должен быть в формате YYYY")
+        }
+
         return;
     } else {
         $(".error").addClass("hide")
