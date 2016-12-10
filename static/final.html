@@ -23,16 +23,28 @@
         <img id="image" class="img-responsive center-block vcenter hide" src="/img/{{ image_url }}">
         
         <div class="feedback" data-user-id="{{ user_id }}">
-            <div class="btn btn-default btn-lg" data-value="student">Я студент / ещё не определился</div>
-            <div class="btn btn-default btn-lg" data-value="science">Я грызу гранит науки</div>
-            <div class="btn btn-default btn-lg" data-value="money">Я не в науке и доволен</div>
+            <span> Помогите Капице собрать эксперементальные данные и угадывать лучше </span>
+            <div style="text-align: center; margin-top: 10px" >
+                    На самом деле, Я...
+                </div>
+            <div style= "margin-top:10px">
+                <p><button class = "btn btn-default btn-block" data-value="student"> Студент/еще не определился </button>
+                <p><button class = "btn btn-default btn-block" data-value="science"> Ученый - расширяю границы человеческого знания, и мне за это платят </button>
+                <p><button class = "btn btn-default btn-block" data-value="money"> Покинул науку, но наука никогда не покинет меня </button>
+            </div>
+        </div>
+
+        <div class="thank_you hide">
+            <div style="text-align: center; margin-top: 10px" >
+                    Спасибо! Ваша точка не будет выкинута!
+            </div>
         </div>
         
         <script src="https://yastatic.net/share2/share.js" async="async"></script>
 
         <div class="row" style="margin-bottom: 20px">
                 <div style="text-align: center; margin-top: 10px" >
-                    Поделиться учеными мужами
+                    Поделиться интересными результатами с учеными мужами
                 </div>
                 <div id="share_buttons" style="text-align: center; margin-top: 10px; margin-bottom: 10px" class="ya-share2 center-block" data-services="vkontakte,facebook" data-image="http://kapitsa-vs-you.ru/img/{{ image_url }}"  data-url="http://kapitsa-vs-you.ru" data-description="Похоже, что я Капица на {{ score }}%. Тест для физтехов определяющий вероятность стать ученым" data-counter></div>
         </div>

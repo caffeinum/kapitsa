@@ -32,6 +32,8 @@ jQuery(function () {
         var status = $(this).data("value")
 
         $.get("/feedback", {id: user_id, status: status})
+        $(".thank_you").removeClass("hide")
+        $(".feedback").addClass("hide")
     })
     
     collectAnswers()
