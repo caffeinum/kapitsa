@@ -23,18 +23,18 @@
         <img id="image" class="img-responsive center-block vcenter hide" src="/img/{{ image_url }}">
         
         <div class="feedback" data-user-id="{{ user_id }}">
-            <div class="btn btn-default btn-lg" data-value="student">Я студент</div>
-            <div class="btn btn-default btn-lg" data-value="science">Я в науке</div>
-            <div class="btn btn-default btn-lg" data-value="money">Я бросил науку</div>
+            <div class="btn btn-default btn-lg" data-value="student">Я студент / ещё не определился</div>
+            <div class="btn btn-default btn-lg" data-value="science">Я грызу гранит науки</div>
+            <div class="btn btn-default btn-lg" data-value="money">Я не в науке и доволен</div>
         </div>
         
         <script src="https://yastatic.net/share2/share.js" async="async"></script>
 
         <div class="row" style="margin-bottom: 20px">
                 <div style="text-align: center; margin-top: 10px" >
-                    Поделиться с учеными мужами {{ score }}% Капицы
+                    Поделиться учеными мужами
                 </div>
-                <div id="share_buttons" style="text-align: center; margin-top: 10px; margin-bottom: 10px" class="ya-share2 center-block" data-services="vkontakte,facebook" data-image="http://kapitsa-vs-you.ru/img/{{ image_url }}"  data-url="http://kapitsa-vs-you.ru" data-description="Тест для физтехов определяющий вероятность стать ученым" data-counter></div>
+                <div id="share_buttons" style="text-align: center; margin-top: 10px; margin-bottom: 10px" class="ya-share2 center-block" data-services="vkontakte,facebook" data-image="http://kapitsa-vs-you.ru/img/{{ image_url }}"  data-url="http://kapitsa-vs-you.ru" data-description="Похоже, что я Капица на {{ score }}%. Тест для физтехов определяющий вероятность стать ученым" data-counter></div>
         </div>
     </body>
 </html>
