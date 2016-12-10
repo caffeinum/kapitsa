@@ -72,6 +72,11 @@ app.post("/final", function(req, res){
 
 })
 
+app.get("/team", function(req, res) {  
+    res.sendFile( path.join(__dirname, "static/team.html") )
+})
+
+
 app.get("*", function(req, res) {  
     res.sendFile( path.join(__dirname, "static/index.html") )
 })
