@@ -52,6 +52,11 @@ samp {
     display: none;
 }
 
+hr { 
+    width:100%; 
+    height:1px; 
+    background: #FFFFFF 
+}
 
 #image {
 	max-width: 95%;
