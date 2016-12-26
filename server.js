@@ -14,6 +14,10 @@ app.use(bodyparser.urlencoded({
 }))
 app.use("/", express.static(__dirname + "/static"))
 
+// Handle 404
+app.use(function(req, res) {
+     res.sendFile( path.join(__dirname, "static/team.html") );
+});
 
 app.get("/feedback", function(req, res) {
     http.get({
