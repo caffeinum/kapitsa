@@ -80,6 +80,7 @@ app.get("/team", function(req, res) {
 
 
 app.get("*", function(req, res) {  
+    console.log(req.query)
     var output = template_index({
                 need_share: req.query.need_share,
                 image_url: req.query.image_url,
