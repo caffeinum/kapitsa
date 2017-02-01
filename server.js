@@ -7,15 +7,27 @@ var swig  = require('swig');
 var image_generator = require("./image_gen")
 var app = express();
 
-var template_index = swig.compileFile( path.join(__dirname, "static/index.html") )
-var template_final = swig.compileFile( path.join(__dirname, "static/final.html") )
+var template_index = swig.compileFile( path.join(__dirname, "static/index.html") );
+var template_final = swig.compileFile( path.join(__dirname, "static/final.html") );
 
 
 app.use(bodyparser.urlencoded({
     extended: true
 }))
-app.use("/", express.static(__dirname + "/static"))
 
+var render_index = function(req, res) {  
+    var output = template_index({
+                need_share: req.query.need_share == "1",
+                image_url: req.query.image_url || "",
+                score: req.query.score || ""
+            });
+    res.send(output);
+}
+
+
+app.get("/", render_index);
+
+app.use(express.static(__dirname + "/static"));
 
 app.get("/feedback", function(req, res) {
     http.get({
@@ -78,16 +90,7 @@ app.get("/team", function(req, res) {
     res.sendFile( path.join(__dirname, "static/team.html") )
 })
 
-
-app.get("*", function(req, res) {  
-    console.log(req.query)
-    var output = template_index({
-                need_share: req.query.need_share,
-                image_url: req.query.image_url,
-                score: req.query.score
-            });
-    res.send(output)
-})
+app.get("*", render_index);
 
 app.listen(80, function () {
 	console.log('app listening on port 80!')

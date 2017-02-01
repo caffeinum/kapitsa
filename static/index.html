@@ -11,18 +11,17 @@
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <link href="https://fonts.googleapis.com/css?family=Lora|Merriweather|PT+Sans|Playfair+Display" rel="stylesheet">
     <!--        <link rel="stylesheet" href="checkbox.css">-->
-    <link rel="stylesheet" href="main.css"> </head>
+    <link rel="stylesheet" href="main.css"> 
 
-    {% if need_share == "1" %}
-      <meta property="og:title" content="Я Капица на {{ score }}%" />
-      <meta property="og:description" content="Я Капица на {{ score }}%. Тест для физтехов, определяющий вероятность стать ученым. #kapitsaVSyou #kapitsa #mipt70" />
-      <meta property="og:image" content="http://kapitsa-vs-you.ru/img/{{ image_url }}" />
-
+    {% if need_share %}
+        <meta property="og:title" content="Я Капица на {{ score }}%" />
+        <meta property="og:description" content="Я Капица на {{ score }}%. Тест для физтехов, определяющий вероятность стать ученым. #kapitsaVSyou #kapitsa #mipt70" />
+        <meta property="og:image" content="http://kapitsa-vs-you.ru/img/{{ image_url }}" />
       <meta name="title" content="Я Капица на {{ score }}%" />
       <meta name="description" content="Я Капица на {{ score }}%. Тест для физтехов, определяющий вероятность стать ученым. #kapitsaVSyou #kapitsa #mipt70" />
-      <link rel="image_src" href="http://kapitsa-vs-you.ru/img/{{ image_url }}" />
+      <link rel="image_src" href="http://kapitsa-vs-you.ru/img/{{ image_url }}"/>
     {% endif %}
-
+</head>
 <body> <img src="img/wall.jpg" class="fullscreen background">
     <form action="/final" method="post">
     <div class="intro fullscreen">
