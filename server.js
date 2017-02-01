@@ -7,7 +7,9 @@ var swig  = require('swig');
 var image_generator = require("./image_gen")
 var app = express();
 
-var template = swig.compileFile( path.join(__dirname, "static/final.html") )
+var template_index = swig.compileFile( path.join(__dirname, "static/index.html") )
+var template_final = swig.compileFile( path.join(__dirname, "static/final.html") )
+
 
 app.use(bodyparser.urlencoded({
     extended: true
@@ -58,7 +60,7 @@ app.post("/final", function(req, res){
             } else {
                 image_url = "static/img/results/error.png"
             }
-            var output = template({
+            var output = template_final({
                 score: Math.round( 100 * score),
                 image_url: image_url,
                 image_id: id,
@@ -78,7 +80,12 @@ app.get("/team", function(req, res) {
 
 
 app.get("*", function(req, res) {  
-    res.sendFile( path.join(__dirname, "static/index.html") )
+    var output = template_index({
+                need_share: req.query.need_share,
+                image_url: req.query.image_url,
+                score: req.query.score
+            });
+    res.send(output)
 })
 
 app.listen(80, function () {
