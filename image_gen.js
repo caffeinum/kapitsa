@@ -4,8 +4,8 @@ var Canvas = require('canvas')
 var impact = new Font('impact', fontFile('impact.ttf'))
 
 var fs = require('fs');
-var width = 1032
-var height = 617
+var width = 1910
+var height = 1000
 
 function fontFile(name) {
 	console.log( __dirname )
@@ -45,12 +45,12 @@ function drawTexts(grade) {
 }
 
 function drawGrade(grade) {
-	ctx.fillStyle = "#F1F2E4"
-	ctx.fillRect(650,200,350,200)
+	// ctx.fillStyle = "#F1F2E4"
+	// ctx.fillRect(650,200,350,200)
 
 	ctx.fillStyle = "#3B797D"
 	ctx.font = '144px impact';
-	ctx.fillText( Math.round(grade) + "%", 670, 370);
+	ctx.fillText( Math.round(grade) + "%", 1200, 650);
  
 }
 
