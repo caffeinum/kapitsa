@@ -50,7 +50,7 @@ function drawGrade(grade) {
 
 	ctx.fillStyle = "#3B797D"
 	ctx.font = '288px impact';
-	ctx.fillText( Math.round(grade) + "%", 1050, 650);
+	ctx.fillText( Math.round(grade) + "%", 1100, 600);
  
 }
 
