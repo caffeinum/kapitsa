@@ -70,7 +70,7 @@ app.post("/final", function(req, res){
                 
                 image_url = image_generator(id, score)
             } else {
-                image_url = "static/img/results/error.png"
+                image_url = "static/img/results/error.jpg"
             }
             var output = template_final({
                 score: Math.round( 100 * score),

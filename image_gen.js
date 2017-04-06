@@ -27,10 +27,10 @@ function drawBorder() {
 
 function drawFace(grade) {
 	var images = [
-		"ft.png",
-		"fe.png",
-		"st.png",
-		"et.png"	
+		"ft.jpg",
+		"fe.jpg",
+		"st.jpg",
+		"et.jpg"	
 	]	
 
 	var image = images[ Math.floor(grade / 25) ] 
@@ -73,10 +73,10 @@ function generator(id, grade) {
 	drawKapitsa(ctx, grade*100)
     
     if( ! checkString(id) ) {
-       return 'error.png'
+       return 'error.jpg'
     }
 	
-	var path = 'results/' + id + '.png'
+	var path = 'results/' + id + '.jpg'
 	fs.writeFileSync(__dirname + "/static/img/" + path, canvas.toBuffer());
 	
 	return path;
