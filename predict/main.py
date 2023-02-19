@@ -19,15 +19,13 @@ def get_date():
 def isnan(x):
     if x is None:
         return True
-    if type(x) is float:
-        return np.isnan(x)
-    return False
+    return np.isnan(x) if type(x) is float else False
 
 
 class DB(object):
     def __init__(self, filename):
         if os.path.isfile(filename):
-            shutil.copy(filename, "backup_" + filename)
+            shutil.copy(filename, f"backup_{filename}")
 
         self.conn = sqlite3.connect(filename)
         self._try_create_table()
@@ -81,10 +79,8 @@ deps = [u'ФОПФ', u'ФИВТ', u'ФУПМ', u'ФАКИ', u'ФАЛТ', u'ФП�
 def json_to_vec(j):
     def find(x, pattern):
         x = j[x]
-        if isnan(x):
-            return x
-        return pattern in x
-    
+        return x if isnan(x) else pattern in x
+
     def find_ind(x, _list):
         x = j[x]
         if isnan(x):
@@ -93,26 +89,39 @@ def json_to_vec(j):
             if _list[i] in x:
                 return i
         return np.nan
-    
+
     X = np.zeros(24)
     if j["department"] in deps:
         X[deps.index(j["department"])] = 1
-    
+
     i = len(deps)
-    X[i] = find("relatives", u"Да"); i+= 1
-    X[i] = find("social_activity", u"Да"); i+= 1
-    X[i] = find("increased_scholarship", u"Да"); i+= 1
-    X[i] = find_ind("exam_retakes", [u"Не было", u"Не больше", u"Больше"]); i+= 1
-    X[i] = find_ind("influenced_by", [u"емья", u"друз", u"препод"]); i+= 1
-    X[i] = find("religion", u"Да"); i+= 1
-    X[i] = find("nutrition", u"столов"); i+= 1
-    X[i] = find_ind("lectures", [u"всегд", u"полов", u"редко"]); i+= 1
-    X[i] = find("sport", u"Да"); i+= 1
-    
-    X[i] = j["friends"]; i+= 1
-    X[i] = j["exam_points_maths"]; i+= 1
-    X[i] = j["exam_points_phys"]; i += 1
-    X[i] = j["exam_points_russ"]; i+= 1
+    X[i] = find("relatives", u"Да")
+    i+= 1
+    X[i] = find("social_activity", u"Да")
+    i+= 1
+    X[i] = find("increased_scholarship", u"Да")
+    i+= 1
+    X[i] = find_ind("exam_retakes", [u"Не было", u"Не больше", u"Больше"])
+    i+= 1
+    X[i] = find_ind("influenced_by", [u"емья", u"друз", u"препод"])
+    i+= 1
+    X[i] = find("religion", u"Да")
+    i+= 1
+    X[i] = find("nutrition", u"столов")
+    i+= 1
+    X[i] = find_ind("lectures", [u"всегд", u"полов", u"редко"])
+    i+= 1
+    X[i] = find("sport", u"Да")
+    i+= 1
+
+    X[i] = j["friends"]
+    i+= 1
+    X[i] = j["exam_points_maths"]
+    i+= 1
+    X[i] = j["exam_points_phys"]
+    i += 1
+    X[i] = j["exam_points_russ"]
+    i+= 1
     return X
 
 
